@@ -5,15 +5,9 @@ management:
   speakeasyVersion: 1.116.0
   generationVersion: 2.185.0
 generation:
-  comments:
-    disableComments: false
-    omitDescriptionIfSummaryPresent: false
-  baseServerURL: ""
-  flattenGlobalSecurity: true
-  repoURL: https://github.com/ding-live/ding-csharp.git
+  comments: {}
   sdkClassName: Ding
-  singleTagPerOp: false
-  tagNamespacingDisabled: false
+  repoURL: https://github.com/ding-live/ding-typescript.git
 features:
   typescript:
     core: 3.1.2
@@ -23,7 +17,7 @@ features:
     globalServerURLs: 2.82.0
     serverIDs: 2.81.2
 typescript:
-  version: 0.1.0
+  version: 0.2.0
   author: Ding
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
@@ -40,4 +34,5 @@ typescript:
   maxMethodParams: 4
   outputModelSuffix: output
   packageName: '@ding-live/ding'
+  published: true
   repoSubDirectory: .
