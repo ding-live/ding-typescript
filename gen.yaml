@@ -5,9 +5,15 @@ management:
   speakeasyVersion: 1.116.0
   generationVersion: 2.185.0
 generation:
-  comments: {}
-  sdkClassName: Ding
+  comments:
+    disableComments: false
+    omitDescriptionIfSummaryPresent: false
+  baseServerURL: ""
+  flattenGlobalSecurity: true
   repoURL: https://github.com/ding-live/ding-typescript.git
+  sdkClassName: Ding
+  singleTagPerOp: false
+  tagNamespacingDisabled: false
 features:
   typescript:
     core: 3.1.2
