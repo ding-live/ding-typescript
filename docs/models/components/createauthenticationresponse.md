@@ -1,0 +1,13 @@
+# CreateAuthenticationResponse
+
+A successful response to an authentication creation request.
+
+
+## Fields
+
+| Field                                                                                           | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `authenticationUuid`                                                                            | *string*                                                                                        | :heavy_minus_sign:                                                                              | A unique identifier for the authentication that you can use on the /check and /retry endpoints. |
+| `createdAt`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)   | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `expiresAt`                                                                                     | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)   | :heavy_minus_sign:                                                                              | The time at which the authentication expires and can no longer be checked or retried.           |
+| `status`                                                                                        | [components.Status](../../models/components/status.md)                                          | :heavy_minus_sign:                                                                              | The status of the authentication.                                                               |
