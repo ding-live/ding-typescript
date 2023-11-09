@@ -21,7 +21,7 @@ export class Otp {
     }
 
     /**
-     * Check an authentication code
+     * Check a code
      */
     async check(
         req: components.CreateCheckRequest,
@@ -130,7 +130,7 @@ export class Otp {
     }
 
     /**
-     * Create an authentication
+     * Send a code
      */
     async createAutentication(
         req: components.CreateAuthenticationRequest,
@@ -240,7 +240,7 @@ export class Otp {
     }
 
     /**
-     * Retry an authentication
+     * Perform a retry
      */
     async retry(
         req: components.RetryAuthenticationRequest,

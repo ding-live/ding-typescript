@@ -7,17 +7,16 @@ Retrieve up-to-date metadata about a specific phone number
 
 ### Available Operations
 
-* [lookup](#lookup) - Lookup a phone number
+* [lookup](#lookup) - Lookup a number
 
 ## lookup
 
-Lookup a phone number
+Lookup a number
 
 ### Example Usage
 
 ```typescript
 import { Ding } from "@ding-live/ding";
-import { LookupRequest } from "@ding-live/ding/dist/models/components";
 import { LookupRequest } from "@ding-live/ding/dist/models/operations";
 
 (async() => {
@@ -25,11 +24,9 @@ import { LookupRequest } from "@ding-live/ding/dist/models/operations";
     apiKey: "YOUR_API_KEY",
   });
 const customerUuid: string = "6e93aa15-9177-4d09-8395-b69ce50db1c8";
-const lookupRequest: LookupRequest = {
-  phoneNumber: "+1234567890",
-};
+const phoneNumber: string = "string";
 
-  const res = await sdk.lookup.lookup(customerUuid, lookupRequest);
+  const res = await sdk.lookup.lookup(customerUuid, phoneNumber);
 
   if (res.statusCode == 200) {
     // handle response
@@ -39,11 +36,11 @@ const lookupRequest: LookupRequest = {
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `customerUuid`                                                       | *string*                                                             | :heavy_check_mark:                                                   | N/A                                                                  |
-| `lookupRequest`                                                      | [components.LookupRequest](../../models/components/lookuprequest.md) | :heavy_minus_sign:                                                   | N/A                                                                  |
-| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `customerUuid`                                               | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `phoneNumber`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
 ### Response

@@ -6,7 +6,16 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../internal/utils";
 import { Expose, Transform } from "class-transformer";
 
 /**
- * The status of the authentication.
+ * The status of the retry. Possible values are:
+ *
+ * @remarks
+ *   * `approved` - The retry was approved and a new code was sent.
+ *   * `denied` - The retry was denied.
+ *   * `no_attempt` - No attempt was sent yet so we cannot perform a retry.
+ *   * `rate_limited` - The authentication was rate limited and cannot be retried.
+ *   * `expired_auth` - The authentication has expired and cannot be retried.
+ *   * `already_validated` - The authentication has already been validated.
+ *
  */
 export enum RetryAuthenticationResponseStatus {
     Approved = "approved",
@@ -46,7 +55,16 @@ export class RetryAuthenticationResponse extends SpeakeasyBase {
     remainingRetry?: number;
 
     /**
-     * The status of the authentication.
+     * The status of the retry. Possible values are:
+     *
+     * @remarks
+     *   * `approved` - The retry was approved and a new code was sent.
+     *   * `denied` - The retry was denied.
+     *   * `no_attempt` - No attempt was sent yet so we cannot perform a retry.
+     *   * `rate_limited` - The authentication was rate limited and cannot be retried.
+     *   * `expired_auth` - The authentication has expired and cannot be retried.
+     *   * `already_validated` - The authentication has already been validated.
+     *
      */
     @SpeakeasyMetadata()
     @Expose({ name: "status" })

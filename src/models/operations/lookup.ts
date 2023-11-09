@@ -10,8 +10,8 @@ export class LookupRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=customer-uuid" })
     customerUuid: string;
 
-    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    lookupRequest?: components.LookupRequest;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=phone_number" })
+    phoneNumber: string;
 }
 
 export class LookupResponse extends SpeakeasyBase {

@@ -31,7 +31,6 @@ src/models/components/createauthenticationrequest.ts
 src/models/components/retryauthenticationresponse.ts
 src/models/components/retryauthenticationrequest.ts
 src/models/components/lookupresponse.ts
-src/models/components/lookuprequest.ts
 src/models/components/security.ts
 src/models/errors/errorresponse.ts
 src/models/errors/index.ts
@@ -55,7 +54,6 @@ docs/models/components/retryauthenticationresponse.md
 docs/models/components/retryauthenticationrequest.md
 docs/models/components/linetype.md
 docs/models/components/lookupresponse.md
-docs/models/components/lookuprequest.md
 docs/models/components/security.md
 docs/models/errors/code.md
 docs/models/errors/errorresponse.md

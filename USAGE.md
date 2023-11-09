@@ -51,9 +51,9 @@ import { Ding } from "@ding-live/ding";
 
 ```
 
-### Retry an authentication
+### Perform a retry
 
-Retry an authentication if a user has not received the code.
+Perform a retry if a user has not received the code.
 
 
 ```typescript

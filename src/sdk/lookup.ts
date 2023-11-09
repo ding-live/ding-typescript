@@ -21,32 +21,22 @@ export class Lookup {
     }
 
     /**
-     * Lookup a phone number
+     * Lookup a number
      */
     async lookup(
         customerUuid: string,
-        lookupRequest?: components.LookupRequest,
+        phoneNumber: string,
         config?: AxiosRequestConfig
     ): Promise<operations.LookupResponse> {
         const req = new operations.LookupRequest({
             customerUuid: customerUuid,
-            lookupRequest: lookupRequest,
+            phoneNumber: phoneNumber,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const operationUrl: string = baseURL.replace(/\/$/, "") + "/lookup";
-
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
-
-        try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "lookupRequest", "json");
-        } catch (e: unknown) {
-            if (e instanceof Error) {
-                throw new Error(`Error serializing request body, cause: ${e.message}`);
-            }
-        }
+        const operationUrl: string = utils.generateURL(baseURL, "/lookup/{phone_number}", req);
         const client: AxiosInstance = this.sdkConfiguration.defaultClient;
         let globalSecurity = this.sdkConfiguration.security;
         if (typeof globalSecurity === "function") {
@@ -58,7 +48,6 @@ export class Lookup {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers: RawAxiosRequestHeaders = {
             ...utils.getHeadersFromRequest(req),
-            ...reqBodyHeaders,
             ...config?.headers,
             ...properties.headers,
         };
@@ -69,10 +58,9 @@ export class Lookup {
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
             url: operationUrl,
-            method: "post",
+            method: "get",
             headers: headers,
             responseType: "arraybuffer",
-            data: reqBody,
             ...config,
         });
 
