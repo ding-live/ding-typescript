@@ -8,8 +8,8 @@ Send OTP codes to your users using their phone numbers.
 ### Available Operations
 
 * [check](#check) - Check an authentication code
+* [createAutentication](#createautentication) - Create an authentication
 * [retry](#retry) - Retry an authentication
-* [send](#send) - Create an authentication
 
 ## check
 
@@ -55,6 +55,50 @@ import { Ding } from "@ding-live/ding";
 | errors.ErrorResponse | 400                  | application/json     |
 | errors.SDKError      | 400-600              | */*                  |
 
+## createAutentication
+
+Create an authentication
+
+### Example Usage
+
+```typescript
+import { Ding } from "@ding-live/ding";
+import { DeviceType } from "@ding-live/ding/dist/models/components";
+
+(async() => {
+  const sdk = new Ding({
+    apiKey: "YOUR_API_KEY",
+  });
+
+  const res = await sdk.otp.createAutentication({
+    customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+    phoneNumber: "+1234567890",
+  });
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [components.CreateAuthenticationRequest](../../models/components/createauthenticationrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+
+
+### Response
+
+**Promise<[operations.CreateAutenticationResponse](../../models/operations/createautenticationresponse.md)>**
+### Errors
+
+| Error Object         | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 400-600              | */*                  |
+
 ## retry
 
 Retry an authentication
@@ -91,50 +135,6 @@ import { Ding } from "@ding-live/ding";
 ### Response
 
 **Promise<[operations.RetryResponse](../../models/operations/retryresponse.md)>**
-### Errors
-
-| Error Object         | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 400-600              | */*                  |
-
-## send
-
-Create an authentication
-
-### Example Usage
-
-```typescript
-import { Ding } from "@ding-live/ding";
-import { DeviceType } from "@ding-live/ding/dist/models/components";
-
-(async() => {
-  const sdk = new Ding({
-    apiKey: "YOUR_API_KEY",
-  });
-
-  const res = await sdk.otp.send({
-    customerUuid: "82779012-9667-4917-8532-b94017ce3f0f",
-    phoneNumber: "+1234567890",
-  });
-
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
-```
-
-### Parameters
-
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [components.CreateAuthenticationRequest](../../models/components/createauthenticationrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
-
-
-### Response
-
-**Promise<[operations.CreateAutenticationResponse](../../models/operations/createautenticationresponse.md)>**
 ### Errors
 
 | Error Object         | Status Code          | Content Type         |

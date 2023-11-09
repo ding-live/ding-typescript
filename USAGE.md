@@ -13,8 +13,8 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
         apiKey: "YOUR_API_KEY",
     });
 
-    const res = await sdk.otp.send({
-        customerUuid: "82779012-9667-4917-8532-b94017ce3f0f",
+    const res = await sdk.otp.createAutentication({
+        customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
         phoneNumber: "+1234567890",
     });
 
