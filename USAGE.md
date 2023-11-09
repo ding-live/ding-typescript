@@ -1,7 +1,8 @@
 <!-- Start SDK Example Usage -->
+### Send a code
 
-## Send a code
 Send an OTP code to a user's phone number.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -12,8 +13,8 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
         apiKey: "YOUR_API_KEY",
     });
 
-    const res = await sdk.otp.createAutentication({
-        customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+    const res = await sdk.otp.send({
+        customerUuid: "82779012-9667-4917-8532-b94017ce3f0f",
         phoneNumber: "+1234567890",
     });
 
@@ -24,9 +25,10 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
 
 ```
 
+### Check a code
 
-## Check a code
 Check that a code entered by a user is valid.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -49,9 +51,10 @@ import { Ding } from "@ding-live/ding";
 
 ```
 
+### Retry an authentication
 
-## Retry an authentication
 Retry an authentication if a user has not received the code.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";

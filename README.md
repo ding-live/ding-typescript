@@ -21,8 +21,10 @@ yarn add @ding-live/ding
 ## SDK Example Usage
 
 <!-- Start SDK Example Usage -->
-## Send a code
+### Send a code
+
 Send an OTP code to a user's phone number.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -33,8 +35,8 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
         apiKey: "YOUR_API_KEY",
     });
 
-    const res = await sdk.otp.createAutentication({
-        customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+    const res = await sdk.otp.send({
+        customerUuid: "82779012-9667-4917-8532-b94017ce3f0f",
         phoneNumber: "+1234567890",
     });
 
@@ -45,9 +47,10 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
 
 ```
 
+### Check a code
 
-## Check a code
 Check that a code entered by a user is valid.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -70,9 +73,10 @@ import { Ding } from "@ding-live/ding";
 
 ```
 
+### Retry an authentication
 
-## Retry an authentication
 Retry an authentication if a user has not received the code.
+
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -102,8 +106,8 @@ import { Ding } from "@ding-live/ding";
 ### [otp](docs/sdks/otp/README.md)
 
 * [check](docs/sdks/otp/README.md#check) - Check an authentication code
-* [createAutentication](docs/sdks/otp/README.md#createautentication) - Create an authentication
 * [retry](docs/sdks/otp/README.md#retry) - Retry an authentication
+* [send](docs/sdks/otp/README.md#send) - Create an authentication
 
 ### [lookup](docs/sdks/lookup/README.md)
 
@@ -115,7 +119,7 @@ import { Ding } from "@ding-live/ding";
 <!-- End Dev Containers -->
 
 <!-- Start Error Handling -->
-# Error Handling
+## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
 
@@ -124,9 +128,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 | errors.ErrorResponse | 400                  | application/json     |
 | errors.SDKError      | 400-600              | */*                  |
 
-
-## Check a code
-Check that a code entered by a user is valid.
+Example
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -158,10 +160,9 @@ import { Ding } from "@ding-live/ding";
 <!-- End Error Handling -->
 
 <!-- Start Custom HTTP Client -->
-# Custom HTTP Client
+## Custom HTTP Client
 
 The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
-
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
@@ -173,15 +174,14 @@ const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
 })
 
-
 const sdk = new Ding({defaultClient: httpClient});
 ```
 <!-- End Custom HTTP Client -->
 
 <!-- Start Authentication -->
-# Authentication
+## Authentication
 
-## Per-Client Security Schemes
+### Per-Client Security Schemes
 
 This SDK supports the following security scheme globally:
 
@@ -190,9 +190,6 @@ This SDK supports the following security scheme globally:
 | `apiKey` | apiKey   | API key  |
 
 To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
-## Check a code
-Check that a code entered by a user is valid.
-
 ```typescript
 import { Ding } from "@ding-live/ding";
 
@@ -218,19 +215,16 @@ import { Ding } from "@ding-live/ding";
 
 
 <!-- Start Server Selection -->
-# Server Selection
+## Server Selection
 
-## Select Server by Name
+### Select Server by Name
 
 You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
 | Name | Server | Variables |
 | ----- | ------ | --------- |
 | `production` | `https://api.ding.live/v1` | None |
-
-For example:
-## Check a code
-Check that a code entered by a user is valid.
+#### Example
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -255,12 +249,9 @@ import { Ding } from "@ding-live/ding";
 ```
 
 
-## Override Server URL Per-Client
+### Override Server URL Per-Client
 
 The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
-## Check a code
-Check that a code entered by a user is valid.
-
 ```typescript
 import { Ding } from "@ding-live/ding";
 
