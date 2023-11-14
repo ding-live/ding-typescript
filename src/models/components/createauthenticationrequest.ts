@@ -23,7 +23,7 @@ export class CreateAuthenticationRequest extends SpeakeasyBase {
     appRealm?: string;
 
     /**
-     * The version of your app.
+     * The version of your application.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "app_version" })
@@ -44,7 +44,7 @@ export class CreateAuthenticationRequest extends SpeakeasyBase {
     customerUuid: string;
 
     /**
-     * Unique identifier for the user's device. For Android, this corresponds to the ANDROID_ID and for iOS, this corresponds to the identifierForVendor.
+     * Unique identifier for the user's device. For Android, this corresponds to the `ANDROID_ID` and for iOS, this corresponds to the `identifierForVendor`.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "device_id" })
@@ -79,7 +79,7 @@ export class CreateAuthenticationRequest extends SpeakeasyBase {
     isReturningUser?: boolean;
 
     /**
-     * The version of the user's operating system.
+     * The version of the user's device operating system.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "os_version" })

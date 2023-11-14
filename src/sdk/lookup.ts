@@ -21,7 +21,7 @@ export class Lookup {
     }
 
     /**
-     * Lookup a number
+     * Perform a phone number lookup
      */
     async lookup(
         customerUuid: string,

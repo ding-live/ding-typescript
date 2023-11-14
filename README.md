@@ -111,7 +111,7 @@ import { Ding } from "@ding-live/ding";
 
 ### [lookup](docs/sdks/lookup/README.md)
 
-* [lookup](docs/sdks/lookup/README.md#lookup) - Lookup a number
+* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->

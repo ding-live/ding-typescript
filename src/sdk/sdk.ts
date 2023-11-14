@@ -53,9 +53,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.2.4";
-    genVersion = "2.187.7";
-    userAgent = "speakeasy-sdk/typescript 0.2.4 2.187.7 1.0.0 @ding-live/ding";
+    sdkVersion = "0.2.5";
+    genVersion = "2.188.3";
+    userAgent = "speakeasy-sdk/typescript 0.2.5 2.188.3 1.0.0 @ding-live/ding";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -63,7 +63,7 @@ export class SDKConfiguration {
 }
 
 /**
- * Ding: The OTP API allows you to send authentication codes to your users using their phone numbers
+ * Ding: The OTP API allows you to send authentication codes to your users using their phone numbers.
  */
 export class Ding {
     /**
