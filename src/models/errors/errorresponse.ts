@@ -43,6 +43,9 @@ export enum Code {
     InvalidDeviceId = "invalid_device_id",
 }
 
+/**
+ * Bad Request
+ */
 export class ErrorResponse extends Error {
     /**
      * A machine-readable code that describes the error. Possible values are:
