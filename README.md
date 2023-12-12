@@ -2,7 +2,7 @@
 
 The Ding Typescript library provides convenient access to the Ding API from applications written in JS or TS.
 
-<!-- Start SDK Installation -->
+<!-- Start SDK Installation [installation] -->
 ## SDK Installation
 
 ### NPM
@@ -16,11 +16,13 @@ npm add @ding-live/ding
 ```bash
 yarn add @ding-live/ding
 ```
-<!-- End SDK Installation -->
+<!-- End SDK Installation [installation] -->
 
 ## SDK Example Usage
 
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
 ### Send a code
 
 Send an OTP code to a user's phone number.
@@ -30,7 +32,7 @@ Send an OTP code to a user's phone number.
 import { Ding } from "@ding-live/ding";
 import { DeviceType } from "@ding-live/ding/dist/models/components";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -43,7 +45,9 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -55,7 +59,7 @@ Check that a code entered by a user is valid.
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -69,7 +73,9 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -81,7 +87,7 @@ Perform a retry if a user has not received the code.
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -94,14 +100,15 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
 
-<!-- Start SDK Available Operations -->
+<!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
-
 
 ### [otp](docs/sdks/otp/README.md)
 
@@ -112,13 +119,9 @@ import { Ding } from "@ding-live/ding";
 ### [lookup](docs/sdks/lookup/README.md)
 
 * [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
-<!-- End SDK Available Operations -->
+<!-- End Available Resources and Operations [operations] -->
 
-<!-- Start Dev Containers -->
-
-<!-- End Dev Containers -->
-
-<!-- Start Error Handling -->
+<!-- Start Error Handling [errors] -->
 ## Error Handling
 
 Handling errors in this SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
@@ -133,42 +136,48 @@ Example
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async() => {
-  const sdk = new Ding({
-    apiKey: "YOUR_API_KEY",
-  });
+async function run() {
+    const sdk = new Ding({
+        apiKey: "YOUR_API_KEY",
+    });
 
-  
-  let res;
-  try {
-    res = await sdk.otp.check({
-    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-    checkCode: "123456",
-    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-  });
-  } catch (e) { 
-    if (e instanceof errors.ErrorResponse) {
-      console.error(e) // handle exception 
-    
-  }
+    let res;
+    try {
+        res = await sdk.otp.check({
+            authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+            checkCode: "123456",
+            customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+        });
+    } catch (err) {
+        if (err instanceof errors.ErrorResponse) {
+            console.error(err); // handle exception
+            throw err;
+        } else if (err instanceof errors.SDKError) {
+            console.error(err); // handle exception
+            throw err;
+        }
+    }
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
-})();
+    if (res.statusCode == 200) {
+        // handle response
+    }
+}
+
+run();
+
 ```
-<!-- End Error Handling -->
+<!-- End Error Handling [errors] -->
 
-<!-- Start Custom HTTP Client -->
+<!-- Start Custom HTTP Client [http-client] -->
 ## Custom HTTP Client
 
-The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+The Typescript SDK makes API calls using the [axios](https://axios-http.com/docs/intro) HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
 
 For example, you could specify a header for every request that your sdk makes as follows:
 
 ```typescript
-from @ding-live/ding import Ding;
-import axios;
+import { @ding-live/ding } from "Ding";
+import axios from "axios";
 
 const httpClient = axios.create({
     headers: {'x-custom-header': 'someValue'}
@@ -176,9 +185,9 @@ const httpClient = axios.create({
 
 const sdk = new Ding({defaultClient: httpClient});
 ```
-<!-- End Custom HTTP Client -->
+<!-- End Custom HTTP Client [http-client] -->
 
-<!-- Start Authentication -->
+<!-- Start Authentication [security] -->
 ## Authentication
 
 ### Per-Client Security Schemes
@@ -193,7 +202,7 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -207,14 +216,16 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Authentication -->
+<!-- End Authentication [security] -->
 
 
 
-<!-- Start Server Selection -->
+<!-- Start Server Selection [server] -->
 ## Server Selection
 
 ### Select Server by Name
@@ -224,12 +235,13 @@ You can override the default server globally by passing a server name to the `se
 | Name | Server | Variables |
 | ----- | ------ | --------- |
 | `production` | `https://api.ding.live/v1` | None |
+
 #### Example
 
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         server: "production",
         apiKey: "YOUR_API_KEY",
@@ -244,7 +256,9 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -255,7 +269,7 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         serverURL: "https://api.ding.live/v1",
         apiKey: "YOUR_API_KEY",
@@ -270,10 +284,12 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End Server Selection -->
+<!-- End Server Selection [server] -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

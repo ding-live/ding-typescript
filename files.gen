@@ -36,7 +36,6 @@ src/models/errors/errorresponse.ts
 src/models/errors/index.ts
 src/models/operations/index.ts
 src/models/components/index.ts
-USAGE.md
 docs/models/operations/checkresponse.md
 docs/models/operations/createautenticationresponse.md
 docs/models/operations/retryresponse.md
@@ -60,4 +59,5 @@ docs/models/errors/errorresponse.md
 docs/sdks/ding/README.md
 docs/sdks/otp/README.md
 docs/sdks/lookup/README.md
+USAGE.md
 .gitattributes

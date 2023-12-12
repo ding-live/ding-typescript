@@ -19,7 +19,7 @@ Perform a phone number lookup
 import { Ding } from "@ding-live/ding";
 import { LookupRequest } from "@ding-live/ding/dist/models/operations";
 
-(async() => {
+async function run() {
   const sdk = new Ding({
     apiKey: "YOUR_API_KEY",
   });
@@ -31,7 +31,9 @@ const phoneNumber: string = "string";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters

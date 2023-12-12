@@ -1,4 +1,4 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ### Send a code
 
 Send an OTP code to a user's phone number.
@@ -8,7 +8,7 @@ Send an OTP code to a user's phone number.
 import { Ding } from "@ding-live/ding";
 import { DeviceType } from "@ding-live/ding/dist/models/components";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -21,7 +21,9 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -33,7 +35,7 @@ Check that a code entered by a user is valid.
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -47,7 +49,9 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
 
@@ -59,7 +63,7 @@ Perform a retry if a user has not received the code.
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async () => {
+async function run() {
     const sdk = new Ding({
         apiKey: "YOUR_API_KEY",
     });
@@ -72,7 +76,9 @@ import { Ding } from "@ding-live/ding";
     if (res.statusCode == 200) {
         // handle response
     }
-})();
+}
+
+run();
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->

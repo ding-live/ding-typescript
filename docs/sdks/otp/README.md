@@ -20,7 +20,7 @@ Check a code
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async() => {
+async function run() {
   const sdk = new Ding({
     apiKey: "YOUR_API_KEY",
   });
@@ -34,7 +34,9 @@ import { Ding } from "@ding-live/ding";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -65,7 +67,7 @@ Send a code
 import { Ding } from "@ding-live/ding";
 import { DeviceType } from "@ding-live/ding/dist/models/components";
 
-(async() => {
+async function run() {
   const sdk = new Ding({
     apiKey: "YOUR_API_KEY",
   });
@@ -78,7 +80,9 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
@@ -108,7 +112,7 @@ Perform a retry
 ```typescript
 import { Ding } from "@ding-live/ding";
 
-(async() => {
+async function run() {
   const sdk = new Ding({
     apiKey: "YOUR_API_KEY",
   });
@@ -121,7 +125,9 @@ import { Ding } from "@ding-live/ding";
   if (res.statusCode == 200) {
     // handle response
   }
-})();
+}
+
+run();
 ```
 
 ### Parameters
