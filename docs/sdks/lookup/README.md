@@ -24,7 +24,7 @@ async function run() {
     apiKey: "YOUR_API_KEY",
   });
 const customerUuid: string = "6e93aa15-9177-4d09-8395-b69ce50db1c8";
-const phoneNumber: string = "string";
+const phoneNumber: string = "<value>";
 
   const res = await sdk.lookup.lookup(customerUuid, phoneNumber);
 
