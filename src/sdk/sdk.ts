@@ -10,15 +10,14 @@ import axios from "axios";
 import { AxiosInstance } from "axios";
 
 /**
- * The production Ding API server
- */
-export const ServerProduction = "production";
-/**
  * Contains the list of servers available to the SDK
  */
-export const ServerList = {
-    [ServerProduction]: "https://api.ding.live/v1",
-} as const;
+export const ServerList = [
+    /**
+     * The production Ding API server
+     */
+    "https://api.ding.live/v1",
+] as const;
 
 /**
  * The available configuration options for the SDK
@@ -34,7 +33,7 @@ export type SDKProps = {
     /**
      * Allows overriding the default server used by the SDK
      */
-    server?: keyof typeof ServerList;
+    serverIdx?: number;
 
     /**
      * Allows overriding the default server URL used by the SDK
@@ -53,9 +52,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "1.0.0";
-    sdkVersion = "0.3.2";
-    genVersion = "2.258.0";
-    userAgent = "speakeasy-sdk/typescript 0.3.2 2.258.0 1.0.0 @ding-live/ding";
+    sdkVersion = "0.4.0";
+    genVersion = "2.263.3";
+    userAgent = "speakeasy-sdk/typescript 0.4.0 2.263.3 1.0.0 @ding-live/ding";
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
@@ -79,10 +78,10 @@ export class Ding {
 
     constructor(props?: SDKProps) {
         let serverURL = props?.serverURL;
-        const server = props?.server ?? ServerProduction;
+        const serverIdx = props?.serverIdx ?? 0;
 
         if (!serverURL) {
-            serverURL = ServerList[server];
+            serverURL = ServerList[serverIdx];
         }
 
         const defaultClient = props?.defaultClient ?? axios.create();

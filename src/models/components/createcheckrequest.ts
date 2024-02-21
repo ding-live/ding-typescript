@@ -21,7 +21,7 @@ export class CreateCheckRequest extends SpeakeasyBase {
     checkCode: string;
 
     /**
-     * Your customer UUID, which can be found in the API settings in the dashboard.
+     * Your customer UUID, which can be found in the API settings in the Dashboard.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "customer_uuid" })
