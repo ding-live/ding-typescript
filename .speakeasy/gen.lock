@@ -4,9 +4,9 @@ management:
   docChecksum: 01bd42610039f89b431afa7eb1a3c56c
   docVersion: 1.0.0
   speakeasyVersion: internal
-  generationVersion: 2.272.4
-  releaseVersion: 0.4.1
-  configChecksum: cdf37cd693bf02c9d78ac692c60ab4bd
+  generationVersion: 2.272.7
+  releaseVersion: 0.4.2
+  configChecksum: 522825afcc7db9deb13393b4f365a220
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -16,7 +16,7 @@ features:
     core: 3.4.8
     examples: 2.81.3
     flattening: 2.81.1
-    globalSecurity: 2.82.3
+    globalSecurity: 2.82.4
     globalServerURLs: 2.82.1
 generatedFiles:
   - src/sdk/otp.ts
