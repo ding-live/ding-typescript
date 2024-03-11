@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../internal/utils";
 import * as components from "../../models/components";
 import { AxiosResponse } from "axios";
 
-export class CreateAutenticationResponse extends SpeakeasyBase {
+export class CreateAuthenticationResponse extends SpeakeasyBase {
     /**
      * HTTP response content type for this operation
      */

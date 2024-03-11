@@ -3,6 +3,6 @@
  */
 
 export * from "./check";
-export * from "./createautentication";
+export * from "./createauthentication";
 export * from "./lookup";
 export * from "./retry";

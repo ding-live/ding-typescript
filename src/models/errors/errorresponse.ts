@@ -22,6 +22,7 @@ import { classToPlain, Expose } from "class-transformer";
  *   * `invalid_os_version` - The provided OS version is invalid.
  *   * `invalid_device_model` - The provided device model is invalid.
  *   * `invalid_device_id` - The provided device ID is invalid.
+ *   * `invalid_template_id` - The provided template ID is invalid.
  *
  */
 export enum Code {
@@ -41,6 +42,7 @@ export enum Code {
     InvalidOsVersion = "invalid_os_version",
     InvalidDeviceModel = "invalid_device_model",
     InvalidDeviceId = "invalid_device_id",
+    InvalidTemplateId = "invalid_template_id",
 }
 
 /**
@@ -64,6 +66,7 @@ export class ErrorResponse extends Error {
      *   * `invalid_os_version` - The provided OS version is invalid.
      *   * `invalid_device_model` - The provided device model is invalid.
      *   * `invalid_device_id` - The provided device ID is invalid.
+     *   * `invalid_template_id` - The provided template ID is invalid.
      *
      */
     @SpeakeasyMetadata()

@@ -91,4 +91,11 @@ export class CreateAuthenticationRequest extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "phone_number" })
     phoneNumber: string;
+
+    /**
+     * The template id associated with the message content variant to be sent.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "template_id" })
+    templateId?: string;
 }

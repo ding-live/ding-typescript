@@ -13,8 +13,8 @@ async function run() {
         apiKey: "YOUR_API_KEY",
     });
 
-    const res = await sdk.otp.createAutentication({
-        customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+    const res = await sdk.otp.createAuthentication({
+        customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
         phoneNumber: "+1234567890",
     });
 

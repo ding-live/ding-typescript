@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: 01bd42610039f89b431afa7eb1a3c56c
+  docChecksum: a2a29dc8a8df536c8b2553db26987fad
   docVersion: 1.0.0
-  speakeasyVersion: internal
-  generationVersion: 2.272.7
-  releaseVersion: 0.4.2
-  configChecksum: 522825afcc7db9deb13393b4f365a220
+  speakeasyVersion: 1.205.2
+  generationVersion: 2.279.1
+  releaseVersion: 0.4.3
+  configChecksum: 62cea5218029a63df51b3b4c3ac6e2f8
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -42,7 +42,7 @@ generatedFiles:
   - src/types/rfcdate.ts
   - tsconfig.json
   - src/models/operations/check.ts
-  - src/models/operations/createautentication.ts
+  - src/models/operations/createauthentication.ts
   - src/models/operations/retry.ts
   - src/models/operations/lookup.ts
   - src/models/components/createcheckresponse.ts
@@ -58,7 +58,7 @@ generatedFiles:
   - src/models/operations/index.ts
   - src/models/components/index.ts
   - docs/models/operations/checkresponse.md
-  - docs/models/operations/createautenticationresponse.md
+  - docs/models/operations/createauthenticationresponse.md
   - docs/models/operations/retryresponse.md
   - docs/models/operations/lookuprequest.md
   - docs/models/operations/lookupresponse.md

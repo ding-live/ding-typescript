@@ -8,7 +8,7 @@ Send OTP codes to your users using their phone numbers.
 ### Available Operations
 
 * [check](#check) - Check a code
-* [createAutentication](#createautentication) - Send a code
+* [createAuthentication](#createauthentication) - Send a code
 * [retry](#retry) - Perform a retry
 
 ## check
@@ -57,7 +57,7 @@ run();
 | errors.ErrorResponse | 400                  | application/json     |
 | errors.SDKError      | 4xx-5xx              | */*                  |
 
-## createAutentication
+## createAuthentication
 
 Send a code
 
@@ -72,8 +72,8 @@ async function run() {
     apiKey: "YOUR_API_KEY",
   });
 
-  const res = await sdk.otp.createAutentication({
-    customerUuid: "eae192ab-9e1e-4b21-b5b1-bfcb79a32fcc",
+  const res = await sdk.otp.createAuthentication({
+    customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
     phoneNumber: "+1234567890",
   });
 
@@ -95,7 +95,7 @@ run();
 
 ### Response
 
-**Promise<[operations.CreateAutenticationResponse](../../models/operations/createautenticationresponse.md)>**
+**Promise<[operations.CreateAuthenticationResponse](../../models/operations/createauthenticationresponse.md)>**
 ### Errors
 
 | Error Object         | Status Code          | Content Type         |

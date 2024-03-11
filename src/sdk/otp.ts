@@ -132,10 +132,10 @@ export class Otp {
     /**
      * Send a code
      */
-    async createAutentication(
+    async createAuthentication(
         req: components.CreateAuthenticationRequest,
         config?: AxiosRequestConfig
-    ): Promise<operations.CreateAutenticationResponse> {
+    ): Promise<operations.CreateAuthenticationResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
             req = new components.CreateAuthenticationRequest(req);
         }
@@ -189,8 +189,8 @@ export class Otp {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.CreateAutenticationResponse =
-            new operations.CreateAutenticationResponse({
+        const res: operations.CreateAuthenticationResponse =
+            new operations.CreateAuthenticationResponse({
                 statusCode: httpRes.status,
                 contentType: responseContentType,
                 rawResponse: httpRes,
