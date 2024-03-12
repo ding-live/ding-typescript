@@ -6,6 +6,8 @@ export * from "./createauthenticationrequest";
 export * from "./createauthenticationresponse";
 export * from "./createcheckrequest";
 export * from "./createcheckresponse";
+export * from "./feedbackrequest";
+export * from "./feedbackresponse";
 export * from "./lookupresponse";
 export * from "./retryauthenticationrequest";
 export * from "./retryauthenticationresponse";

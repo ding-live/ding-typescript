@@ -9,6 +9,7 @@ Send OTP codes to your users using their phone numbers.
 
 * [check](#check) - Check a code
 * [createAuthentication](#createauthentication) - Send a code
+* [feedback](#feedback) - Send feedback
 * [retry](#retry) - Perform a retry
 
 ## check
@@ -102,6 +103,52 @@ run();
 | -------------------- | -------------------- | -------------------- |
 | errors.ErrorResponse | 400                  | application/json     |
 | errors.SDKError      | 4xx-5xx              | */*                  |
+
+## feedback
+
+Send feedback
+
+### Example Usage
+
+```typescript
+import { Ding } from "@ding-live/ding";
+import { FeedbackRequestStatus } from "@ding-live/ding/dist/models/components";
+
+async function run() {
+  const sdk = new Ding({
+    apiKey: "YOUR_API_KEY",
+  });
+
+  const res = await sdk.otp.feedback({
+    customerUuid: "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
+    phoneNumber: "+1234567890",
+    status: FeedbackRequestStatus.Onboarded,
+  });
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `request`                                                                | [components.FeedbackRequest](../../models/components/feedbackrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `config`                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)             | :heavy_minus_sign:                                                       | Available config options for making requests.                            |
+
+
+### Response
+
+**Promise<[operations.FeedbackResponse](../../models/operations/feedbackresponse.md)>**
+### Errors
+
+| Error Object    | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4xx-5xx         | */*             |
 
 ## retry
 

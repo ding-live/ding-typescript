@@ -22,6 +22,8 @@ import { classToPlain, Expose } from "class-transformer";
  *   * `invalid_os_version` - The provided OS version is invalid.
  *   * `invalid_device_model` - The provided device model is invalid.
  *   * `invalid_device_id` - The provided device ID is invalid.
+ *   * `no_associated_auth_found` - The associated authentication was not found.
+ *   * `duplicated_feedback_status` - Duplicated feedback status has found.
  *   * `invalid_template_id` - The provided template ID is invalid.
  *
  */
@@ -42,6 +44,8 @@ export enum Code {
     InvalidOsVersion = "invalid_os_version",
     InvalidDeviceModel = "invalid_device_model",
     InvalidDeviceId = "invalid_device_id",
+    NoAssociatedAuthFound = "no_associated_auth_found",
+    DuplicatedFeedbackStatus = "duplicated_feedback_status",
     InvalidTemplateId = "invalid_template_id",
 }
 
@@ -66,6 +70,8 @@ export class ErrorResponse extends Error {
      *   * `invalid_os_version` - The provided OS version is invalid.
      *   * `invalid_device_model` - The provided device model is invalid.
      *   * `invalid_device_id` - The provided device ID is invalid.
+     *   * `no_associated_auth_found` - The associated authentication was not found.
+     *   * `duplicated_feedback_status` - Duplicated feedback status has found.
      *   * `invalid_template_id` - The provided template ID is invalid.
      *
      */

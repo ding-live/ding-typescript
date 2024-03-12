@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: a2a29dc8a8df536c8b2553db26987fad
+  docChecksum: bd5703227a0834ce8cffa01539ad4346
   docVersion: 1.0.0
-  speakeasyVersion: 1.205.2
-  generationVersion: 2.279.1
-  releaseVersion: 0.4.3
-  configChecksum: 62cea5218029a63df51b3b4c3ac6e2f8
+  speakeasyVersion: 1.206.3
+  generationVersion: 2.280.6
+  releaseVersion: 0.4.4
+  configChecksum: 527e8f12a7392f4f60882e1f2449683c
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -17,7 +17,7 @@ features:
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.4
-    globalServerURLs: 2.82.1
+    globalServerURLs: 2.82.2
 generatedFiles:
   - src/sdk/otp.ts
   - src/sdk/lookup.ts
@@ -43,12 +43,15 @@ generatedFiles:
   - tsconfig.json
   - src/models/operations/check.ts
   - src/models/operations/createauthentication.ts
+  - src/models/operations/feedback.ts
   - src/models/operations/retry.ts
   - src/models/operations/lookup.ts
   - src/models/components/createcheckresponse.ts
   - src/models/components/createcheckrequest.ts
   - src/models/components/createauthenticationresponse.ts
   - src/models/components/createauthenticationrequest.ts
+  - src/models/components/feedbackresponse.ts
+  - src/models/components/feedbackrequest.ts
   - src/models/components/retryauthenticationresponse.ts
   - src/models/components/retryauthenticationrequest.ts
   - src/models/components/lookupresponse.ts
@@ -59,6 +62,7 @@ generatedFiles:
   - src/models/components/index.ts
   - docs/models/operations/checkresponse.md
   - docs/models/operations/createauthenticationresponse.md
+  - docs/models/operations/feedbackresponse.md
   - docs/models/operations/retryresponse.md
   - docs/models/operations/lookuprequest.md
   - docs/models/operations/lookupresponse.md
@@ -69,6 +73,9 @@ generatedFiles:
   - docs/models/components/createauthenticationresponse.md
   - docs/models/components/devicetype.md
   - docs/models/components/createauthenticationrequest.md
+  - docs/models/components/feedbackresponse.md
+  - docs/models/components/feedbackrequeststatus.md
+  - docs/models/components/feedbackrequest.md
   - docs/models/components/retryauthenticationresponsestatus.md
   - docs/models/components/retryauthenticationresponse.md
   - docs/models/components/retryauthenticationrequest.md

@@ -4,5 +4,6 @@
 
 export * from "./check";
 export * from "./createauthentication";
+export * from "./feedback";
 export * from "./lookup";
 export * from "./retry";

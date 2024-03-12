@@ -112,6 +112,7 @@ run();
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
 * [createAuthentication](docs/sdks/otp/README.md#createauthentication) - Send a code
+* [feedback](docs/sdks/otp/README.md#feedback) - Send feedback
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
 ### [lookup](docs/sdks/lookup/README.md)
