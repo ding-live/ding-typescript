@@ -10,6 +10,7 @@ import { Expose } from "class-transformer";
  */
 export enum FeedbackRequestStatus {
     Onboarded = "onboarded",
+    NotOnboarded = "not_onboarded",
 }
 
 export class FeedbackRequest extends SpeakeasyBase {
