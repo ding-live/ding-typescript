@@ -1,6 +1,6 @@
 {
   "name": "@ding-live/ding",
-  "version": "0.4.10",
+  "version": "0.4.11",
   "author": "Ding",
   "scripts": {
     "prepare": "tsc --build",
