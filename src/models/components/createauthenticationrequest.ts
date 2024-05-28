@@ -37,6 +37,13 @@ export class CreateAuthenticationRequest extends SpeakeasyBase {
     callbackUrl?: string;
 
     /**
+     * A unique, user-defined identifier that will be included in webhook events
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "correlation_id" })
+    correlationId?: string;
+
+    /**
      * Your customer UUID, which can be found in the API settings in the dashboard.
      */
     @SpeakeasyMetadata()
