@@ -277,3 +277,13 @@ Based on:
 - [typescript v0.4.12] .
 ### Releases
 - [NPM v0.4.12] https://www.npmjs.com/package/@ding-live/ding/v/0.4.12 - .
+
+## 2024-06-22 00:02:35
+### Changes
+Based on:
+- OpenAPI Doc 1.0.0 
+- Speakeasy CLI 1.314.2 (2.349.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v0.4.13] .
+### Releases
+- [NPM v0.4.13] https://www.npmjs.com/package/@ding-live/ding/v/0.4.13 - .
