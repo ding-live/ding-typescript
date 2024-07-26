@@ -3,17 +3,17 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: 85248a8dd6a5cd6fea1b82dfc30249e9
   docVersion: 1.0.0
-  speakeasyVersion: 1.345.4
-  generationVersion: 2.378.3
-  releaseVersion: 0.4.16
-  configChecksum: 85e691866da5a4a25fa9193cb9545fa7
+  speakeasyVersion: 1.346.0
+  generationVersion: 2.379.3
+  releaseVersion: 0.4.17
+  configChecksum: 24f5f3e6e0e9d75b4ee9402f59ab752b
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
   published: true
 features:
   typescript:
-    core: 3.4.13
+    core: 3.4.14
     examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.5
