@@ -10,7 +10,7 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.createAuthentication({
@@ -37,7 +37,7 @@ import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.check({
@@ -65,7 +65,7 @@ import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.retry({

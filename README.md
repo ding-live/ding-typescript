@@ -32,7 +32,7 @@ import { DeviceType } from "@ding-live/ding/dist/models/components";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.createAuthentication({
@@ -59,7 +59,7 @@ import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.check({
@@ -87,7 +87,7 @@ import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.retry({
@@ -137,7 +137,7 @@ import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     let res;
@@ -197,13 +197,13 @@ This SDK supports the following security scheme globally:
 | -------- | -------- | -------- |
 | `apiKey` | apiKey   | API key  |
 
-To authenticate with the API the `apiKey` parameter must be set when initializing the SDK client instance. For example:
+To authenticate with the API the `null` parameter must be set when initializing the SDK client instance. For example:
 ```typescript
 import { Ding } from "@ding-live/ding";
 
 async function run() {
     const sdk = new Ding({
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.check({
@@ -241,7 +241,7 @@ import { Ding } from "@ding-live/ding";
 async function run() {
     const sdk = new Ding({
         serverIdx: 0,
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.check({
@@ -269,7 +269,7 @@ import { Ding } from "@ding-live/ding";
 async function run() {
     const sdk = new Ding({
         serverURL: "https://api.ding.live/v1",
-        apiKey: "YOUR_API_KEY",
+        security: "YOUR_API_KEY",
     });
 
     const res = await sdk.otp.check({

@@ -21,7 +21,7 @@ import { LookupRequest } from "@ding-live/ding/dist/models/operations";
 
 async function run() {
   const sdk = new Ding({
-    apiKey: "YOUR_API_KEY",
+    security: "YOUR_API_KEY",
   });
 const customerUuid: string = "6e93aa15-9177-4d09-8395-b69ce50db1c8";
 const phoneNumber: string = "<value>";
