@@ -10,9 +10,15 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
 typescript:
-  version: 0.4.18
+  version: 0.5.0
+  additionalDependencies:
+    dependencies: {}
+    devDependencies: {}
+    peerDependencies: {}
+  additionalPackageJSON: {}
   author: Ding
   clientServerStatusCodesAsErrors: true
+  enumFormat: union
   flattenGlobalSecurity: true
   imports:
     option: openapi
@@ -24,6 +30,10 @@ typescript:
       webhooks: models/webhooks
   inputModelSuffix: input
   maxMethodParams: 4
+  methodArguments: require-security-and-request
+  moduleFormat: commonjs
   outputModelSuffix: output
   packageName: '@ding-live/ding'
-  templateVersion: v1
+  responseFormat: flat
+  templateVersion: v2
+  useIndexModules: true

@@ -3,49 +3,69 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: 85248a8dd6a5cd6fea1b82dfc30249e9
   docVersion: 1.0.0
-  speakeasyVersion: 1.352.2
-  generationVersion: 2.385.2
-  releaseVersion: 0.4.18
-  configChecksum: f7bf3515c0f0ac3c7838f70837ff993a
+  speakeasyVersion: 1.358.0
+  generationVersion: 2.390.6
+  releaseVersion: 0.5.0
+  configChecksum: 08411735e799181a077dae7b0ba5eb88
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
   published: true
 features:
   typescript:
-    core: 3.4.14
-    examples: 2.81.3
+    additionalDependencies: 0.1.0
+    core: 3.12.3
+    defaultEnabledRetries: 0.1.0
+    envVarSecurityUsage: 0.1.1
+    examples: 2.81.4
     flattening: 2.81.1
-    globalSecurity: 2.82.6
-    globalServerURLs: 2.82.2
+    globalSecurity: 2.82.11
+    globalSecurityCallbacks: 0.1.0
+    globalSecurityFlattening: 0.1.0
+    globalServerURLs: 2.82.4
+    responseFormat: 0.2.3
+    retries: 2.83.0
+    sdkHooks: 0.1.0
 generatedFiles:
+  - src/funcs/otpCheck.ts
+  - src/funcs/otpCreateAuthentication.ts
+  - src/funcs/otpFeedback.ts
+  - src/funcs/otpRetry.ts
+  - src/funcs/lookupLookup.ts
   - src/sdk/otp.ts
   - src/sdk/lookup.ts
   - src/sdk/sdk.ts
-  - .eslintrc.yml
-  - jest.config.js
-  - package-lock.json
+  - .eslintrc.cjs
+  - .npmignore
+  - RUNTIMES.md
+  - jsr.json
   - package.json
+  - src/core.ts
   - src/index.ts
-  - src/internal/utils/contenttype.ts
-  - src/internal/utils/headers.ts
-  - src/internal/utils/index.ts
-  - src/internal/utils/pathparams.ts
-  - src/internal/utils/queryparams.ts
-  - src/internal/utils/requestbody.ts
-  - src/internal/utils/retries.ts
-  - src/internal/utils/security.ts
-  - src/internal/utils/utils.ts
+  - src/lib/base64.ts
+  - src/lib/config.ts
+  - src/lib/dlv.ts
+  - src/lib/encodings.ts
+  - src/lib/http.ts
+  - src/lib/is-plain-object.ts
+  - src/lib/matchers.ts
+  - src/lib/primitives.ts
+  - src/lib/retries.ts
+  - src/lib/schemas.ts
+  - src/lib/sdks.ts
+  - src/lib/security.ts
+  - src/lib/url.ts
   - src/sdk/index.ts
+  - src/models/errors/httpclienterrors.ts
   - src/models/errors/sdkerror.ts
+  - src/models/errors/sdkvalidationerror.ts
+  - src/types/blobs.ts
+  - src/types/enums.ts
+  - src/types/fp.ts
   - src/types/index.ts
+  - src/types/operations.ts
   - src/types/rfcdate.ts
   - tsconfig.json
-  - src/models/operations/check.ts
-  - src/models/operations/createauthentication.ts
-  - src/models/operations/feedback.ts
-  - src/models/operations/retry.ts
-  - src/models/operations/lookup.ts
   - src/models/components/createcheckresponse.ts
   - src/models/components/createcheckrequest.ts
   - src/models/components/createauthenticationresponse.ts
@@ -57,15 +77,11 @@ generatedFiles:
   - src/models/components/lookupresponse.ts
   - src/models/components/security.ts
   - src/models/errors/errorresponse.ts
+  - src/models/operations/feedback.ts
+  - src/models/operations/lookup.ts
   - src/models/errors/index.ts
-  - src/models/operations/index.ts
   - src/models/components/index.ts
-  - docs/models/operations/checkresponse.md
-  - docs/models/operations/createauthenticationresponse.md
-  - docs/models/operations/feedbackresponse.md
-  - docs/models/operations/retryresponse.md
-  - docs/models/operations/lookuprequest.md
-  - docs/models/operations/lookupresponse.md
+  - src/models/operations/index.ts
   - docs/models/components/createcheckresponsestatus.md
   - docs/models/components/createcheckresponse.md
   - docs/models/components/createcheckrequest.md
@@ -84,8 +100,15 @@ generatedFiles:
   - docs/models/components/security.md
   - docs/models/errors/code.md
   - docs/models/errors/errorresponse.md
+  - docs/models/operations/feedbackresponse.md
+  - docs/models/operations/lookuprequest.md
   - docs/sdks/ding/README.md
+  - docs/lib/utils/retryconfig.md
   - docs/sdks/otp/README.md
   - docs/sdks/lookup/README.md
   - USAGE.md
   - .gitattributes
+  - src/hooks/hooks.ts
+  - src/hooks/types.ts
+  - src/hooks/index.ts
+  - CONTRIBUTING.md
