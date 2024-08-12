@@ -3,10 +3,10 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: c2a5d8222f4117f238343d6187ef2751
   docVersion: 1.0.0
-  speakeasyVersion: 1.360.0
-  generationVersion: 2.392.0
-  releaseVersion: 0.6.0
-  configChecksum: 830cd6fab52f20a7b5005a7d9325dbc5
+  speakeasyVersion: 1.361.1
+  generationVersion: 2.393.4
+  releaseVersion: 0.6.1
+  configChecksum: 40e89aa228a0025b385a7f2a4bd4f73e
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    core: 3.13.0
+    core: 3.13.1
     defaultEnabledRetries: 0.1.0
     envVarSecurityUsage: 0.1.1
     examples: 2.81.4
@@ -61,6 +61,7 @@ generatedFiles:
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
   - src/types/blobs.ts
+  - src/types/constdatetime.ts
   - src/types/enums.ts
   - src/types/fp.ts
   - src/types/index.ts
