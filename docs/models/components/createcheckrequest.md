@@ -1,5 +1,16 @@
 # CreateCheckRequest
 
+## Example Usage
+
+```typescript
+import { CreateCheckRequest } from "@ding-live/ding/models/components";
+
+let value: CreateCheckRequest = {
+    authenticationUuid: "cb739205-9293-496f-aa75-96eb10faaa23",
+    checkCode: "123456",
+    customerUuid: "52c59559-07af-4f1a-ba2f-a9467739251a",
+};
+```
 
 ## Fields
 

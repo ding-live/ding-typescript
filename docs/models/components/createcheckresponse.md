@@ -1,5 +1,14 @@
 # CreateCheckResponse
 
+## Example Usage
+
+```typescript
+import { CreateCheckResponse } from "@ding-live/ding/models/components";
+
+let value: CreateCheckResponse = {
+    status: "valid",
+};
+```
 
 ## Fields
 

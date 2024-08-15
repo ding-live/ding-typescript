@@ -1,5 +1,15 @@
 # RetryAuthenticationResponse
 
+## Example Usage
+
+```typescript
+import { RetryAuthenticationResponse } from "@ding-live/ding/models/components";
+
+let value: RetryAuthenticationResponse = {
+    remainingRetry: 3,
+    status: "approved",
+};
+```
 
 ## Fields
 

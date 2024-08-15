@@ -429,6 +429,31 @@ const sdk = new Ding({ debugLogger: console });
 ```
 <!-- End Debugging [debug] -->
 
+<!-- Start Standalone functions [standalone-funcs] -->
+## Standalone functions
+
+All the methods listed above are available as standalone functions. These
+functions are ideal for use in applications running in the browser, serverless
+runtimes or other environments where application bundle size is a primary
+concern. When using a bundler to build your application, all unused
+functionality will be either excluded from the final bundle or tree-shaken away.
+
+To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
+
+<details>
+
+<summary>Available standalone functions</summary>
+
+- [lookupLookup](docs/sdks/lookup/README.md#lookup)
+- [otpCheck](docs/sdks/otp/README.md#check)
+- [otpCreateAuthentication](docs/sdks/otp/README.md#createauthentication)
+- [otpFeedback](docs/sdks/otp/README.md#feedback)
+- [otpRetry](docs/sdks/otp/README.md#retry)
+
+
+</details>
+<!-- End Standalone functions [standalone-funcs] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development

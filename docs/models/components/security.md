@@ -1,5 +1,14 @@
 # Security
 
+## Example Usage
+
+```typescript
+import { Security } from "@ding-live/ding/models/components";
+
+let value: Security = {
+    apiKey: "YOUR_API_KEY",
+};
+```
 
 ## Fields
 

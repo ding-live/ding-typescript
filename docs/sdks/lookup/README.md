@@ -32,6 +32,37 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { lookupLookup } from "@ding-live/ding/funcs/lookupLookup.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await lookupLookup(ding, "77abfa24-5f6b-4d53-b815-785d37ab83da", "<value>");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |

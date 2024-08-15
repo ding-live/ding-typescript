@@ -1,5 +1,19 @@
 # LookupResponse
 
+## Example Usage
+
+```typescript
+import { LookupResponse } from "@ding-live/ding/models/components";
+
+let value: LookupResponse = {
+    carrier: "AT&T",
+    countryCode: "US",
+    lineType: "Mobile",
+    mcc: "310",
+    mnc: "410",
+    phoneNumber: "+1234567890",
+};
+```
 
 ## Fields
 

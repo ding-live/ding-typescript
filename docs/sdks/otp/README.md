@@ -39,6 +39,41 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { otpCheck } from "@ding-live/ding/funcs/otpCheck.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await otpCheck(ding, {
+    authenticationUuid: "cad10b16-5d83-496f-8b78-ad975689ec7c",
+    checkCode: "123456",
+    customerUuid: "6ea26b45-1a6c-4ba5-b203-fc16792be681",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -77,6 +112,40 @@ async function run() {
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
     phoneNumber: "+1234567890",
   });
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { otpCreateAuthentication } from "@ding-live/ding/funcs/otpCreateAuthentication.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await otpCreateAuthentication(ding, {
+    customerUuid: "edcbc745-0e63-4b74-b6a0-1ed279284f95",
+    phoneNumber: "+1234567890",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)
@@ -132,6 +201,41 @@ async function run() {
 run();
 ```
 
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { otpFeedback } from "@ding-live/ding/funcs/otpFeedback.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await otpFeedback(ding, {
+    customerUuid: "a229d7e4-b110-4c62-956d-3e5c59b4712c",
+    phoneNumber: "+1234567890",
+    status: "onboarded",
+  });
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
 ### Parameters
 
 | Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
@@ -166,6 +270,37 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.retry();
+
+  // Handle the result
+  console.log(result)
+}
+
+run();
+```
+
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { otpRetry } from "@ding-live/ding/funcs/otpRetry.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await otpRetry(ding);
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
 
   // Handle the result
   console.log(result)

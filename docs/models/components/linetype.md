@@ -2,19 +2,16 @@
 
 The type of phone line.
 
+## Example Usage
+
+```typescript
+import { LineType } from "@ding-live/ding/models/components";
+
+let value: LineType = "Mobile";
+```
 
 ## Values
 
-| Name              | Value             |
-| ----------------- | ----------------- |
-| `FixedLine`       | FixedLine         |
-| `Mobile`          | Mobile            |
-| `TollFree`        | TollFree          |
-| `PremiumRate`     | PremiumRate       |
-| `SharedCost`      | SharedCost        |
-| `Voip`            | Voip              |
-| `Pager`           | Pager             |
-| `VoiceMail`       | VoiceMail         |
-| `UniversalAccess` | UniversalAccess   |
-| `Service`         | Service           |
-| `Unknown`         | Unknown           |
+```typescript
+"FixedLine" | "Mobile" | "TollFree" | "PremiumRate" | "SharedCost" | "Voip" | "Pager" | "VoiceMail" | "UniversalAccess" | "Service" | "Unknown"
+```

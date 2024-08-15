@@ -9,14 +9,16 @@ The status of the check. Possible values are:
   * `expired_auth` - The authentication has expired and cannot be checked.
 
 
+## Example Usage
+
+```typescript
+import { CreateCheckResponseStatus } from "@ding-live/ding/models/components";
+
+let value: CreateCheckResponseStatus = "valid";
+```
 
 ## Values
 
-| Name               | Value              |
-| ------------------ | ------------------ |
-| `Valid`            | valid              |
-| `Invalid`          | invalid            |
-| `WithoutAttempt`   | without_attempt    |
-| `RateLimited`      | rate_limited       |
-| `AlreadyValidated` | already_validated  |
-| `ExpiredAuth`      | expired_auth       |
+```typescript
+"valid" | "invalid" | "without_attempt" | "rate_limited" | "already_validated" | "expired_auth"
+```

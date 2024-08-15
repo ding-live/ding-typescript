@@ -2,6 +2,13 @@
 
 Bad Request
 
+## Example Usage
+
+```typescript
+import { ErrorResponse } from "@ding-live/ding/models/errors";
+
+// No examples available for this model
+```
 
 ## Fields
 

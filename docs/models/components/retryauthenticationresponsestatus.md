@@ -9,14 +9,16 @@ The status of the retry. Possible values are:
   * `already_validated` - The authentication has already been validated.
 
 
+## Example Usage
+
+```typescript
+import { RetryAuthenticationResponseStatus } from "@ding-live/ding/models/components";
+
+let value: RetryAuthenticationResponseStatus = "approved";
+```
 
 ## Values
 
-| Name               | Value              |
-| ------------------ | ------------------ |
-| `Approved`         | approved           |
-| `Denied`           | denied             |
-| `NoAttempt`        | no_attempt         |
-| `RateLimited`      | rate_limited       |
-| `ExpiredAuth`      | expired_auth       |
-| `AlreadyValidated` | already_validated  |
+```typescript
+"approved" | "denied" | "no_attempt" | "rate_limited" | "expired_auth" | "already_validated"
+```

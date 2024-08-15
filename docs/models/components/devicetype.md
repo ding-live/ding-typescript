@@ -2,11 +2,16 @@
 
 The type of device the user is using.
 
+## Example Usage
+
+```typescript
+import { DeviceType } from "@ding-live/ding/models/components";
+
+let value: DeviceType = "IOS";
+```
 
 ## Values
 
-| Name      | Value     |
-| --------- | --------- |
-| `Ios`     | IOS       |
-| `Android` | ANDROID   |
-| `Web`     | WEB       |
+```typescript
+"IOS" | "ANDROID" | "WEB"
+```

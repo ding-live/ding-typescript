@@ -6,11 +6,16 @@ The status of the authentication. Possible values are:
   * `spam_detected` - This attempt is flagged as spam. Go to the dashboard for more details.
 
 
+## Example Usage
+
+```typescript
+import { Status } from "@ding-live/ding/models/components";
+
+let value: Status = "rate_limited";
+```
 
 ## Values
 
-| Name           | Value          |
-| -------------- | -------------- |
-| `Pending`      | pending        |
-| `RateLimited`  | rate_limited   |
-| `SpamDetected` | spam_detected  |
+```typescript
+"pending" | "rate_limited" | "spam_detected"
+```

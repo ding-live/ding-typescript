@@ -1,5 +1,15 @@
 # CreateAuthenticationRequest
 
+## Example Usage
+
+```typescript
+import { CreateAuthenticationRequest } from "@ding-live/ding/models/components";
+
+let value: CreateAuthenticationRequest = {
+    customerUuid: "2c3f5ad0-19da-41ff-a78f-097b0074f154",
+    phoneNumber: "+1234567890",
+};
+```
 
 ## Fields
 

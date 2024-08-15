@@ -1,5 +1,12 @@
 # FeedbackResponse
 
+## Example Usage
+
+```typescript
+import { FeedbackResponse } from "@ding-live/ding/models/operations";
+
+// No examples available for this model
+```
 
 ## Supported Types
 

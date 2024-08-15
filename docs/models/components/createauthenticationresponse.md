@@ -2,6 +2,13 @@
 
 A successful response to an authentication creation request.
 
+## Example Usage
+
+```typescript
+import { CreateAuthenticationResponse } from "@ding-live/ding/models/components";
+
+let value: CreateAuthenticationResponse = {};
+```
 
 ## Fields
 
