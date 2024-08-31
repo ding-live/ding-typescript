@@ -2,8 +2,32 @@
 
 The Ding Typescript library provides convenient access to the Ding API from applications written in JS or TS.
 
+<!-- Start Summary [summary] -->
+## Summary
+
+Ding: The OTP API allows you to send authentication codes to your users using their phone numbers.
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+
+* [SDK Installation](#sdk-installation)
+* [Requirements](#requirements)
+* [SDK Example Usage](#sdk-example-usage)
+* [Available Resources and Operations](#available-resources-and-operations)
+* [Standalone functions](#standalone-functions)
+* [Retries](#retries)
+* [Error Handling](#error-handling)
+* [Server Selection](#server-selection)
+* [Custom HTTP Client](#custom-http-client)
+* [Authentication](#authentication)
+* [Debugging](#debugging)
+<!-- End Table of Contents [toc] -->
+
 <!-- Start SDK Installation [installation] -->
 ## SDK Installation
+
+The SDK can be installed with either [npm](https://www.npmjs.com/), [pnpm](https://pnpm.io/), [bun](https://bun.sh/) or [yarn](https://classic.yarnpkg.com/en/) package managers.
 
 ### NPM
 
@@ -143,7 +167,7 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Ding } from "@ding-live/ding";
-import { SDKValidationError } from "@ding-live/ding/models/errors";
+import { ErrorResponse, SDKValidationError } from "@ding-live/ding/models/errors";
 
 const ding = new Ding({
     apiKey: "YOUR_API_KEY",
@@ -166,8 +190,9 @@ async function run() {
                 console.error(err.rawValue);
                 return;
             }
-            case err instanceof errors.ErrorResponse: {
-                console.error(err); // handle exception
+            case err instanceof ErrorResponse: {
+                // Handle err.data$: ErrorResponseData
+                console.error(err);
                 return;
             }
             default: {
