@@ -181,6 +181,9 @@ async function run() {
             checkCode: "123456",
             customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
         });
+
+        // Handle the result
+        console.log(result);
     } catch (err) {
         switch (true) {
             case err instanceof SDKValidationError: {
@@ -200,9 +203,6 @@ async function run() {
             }
         }
     }
-
-    // Handle the result
-    console.log(result);
 }
 
 run();
