@@ -7,7 +7,7 @@ The type of device the user is using.
 ```typescript
 import { DeviceType } from "@ding-live/ding/models/components";
 
-let value: DeviceType = "IOS";
+let value: DeviceType = "WEB";
 ```
 
 ## Values

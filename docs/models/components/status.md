@@ -11,7 +11,7 @@ The status of the authentication. Possible values are:
 ```typescript
 import { Status } from "@ding-live/ding/models/components";
 
-let value: Status = "rate_limited";
+let value: Status = "spam_detected";
 ```
 
 ## Values

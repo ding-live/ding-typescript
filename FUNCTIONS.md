@@ -31,9 +31,9 @@ const ding = new DingCore({
 
 async function run() {
   const res = await otpCheck(ding, {
-    authenticationUuid: "89bd9d8d-69a6-474e-8f46-7cc8796ed151",
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
     checkCode: "123456",
-    customerUuid: "a05dfc2d-df7c-4c78-8a1b-a928fc816742",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
   });
 
   switch (true) {

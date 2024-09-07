@@ -55,9 +55,9 @@ const ding = new DingCore({
 
 async function run() {
   const res = await otpCheck(ding, {
-    authenticationUuid: "cad10b16-5d83-496f-8b78-ad975689ec7c",
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
     checkCode: "123456",
-    customerUuid: "6ea26b45-1a6c-4ba5-b203-fc16792be681",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
   });
 
   if (!res.ok) {
@@ -136,7 +136,7 @@ const ding = new DingCore({
 
 async function run() {
   const res = await otpCreateAuthentication(ding, {
-    customerUuid: "edcbc745-0e63-4b74-b6a0-1ed279284f95",
+    customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
     phoneNumber: "+1234567890",
   });
 
@@ -217,7 +217,7 @@ const ding = new DingCore({
 
 async function run() {
   const res = await otpFeedback(ding, {
-    customerUuid: "a229d7e4-b110-4c62-956d-3e5c59b4712c",
+    customerUuid: "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
     phoneNumber: "+1234567890",
     status: "onboarded",
   });

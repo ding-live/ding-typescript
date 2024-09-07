@@ -6,7 +6,7 @@
 import { FeedbackRequest } from "@ding-live/ding/models/components";
 
 let value: FeedbackRequest = {
-    customerUuid: "71b5e6e1-3b99-4d48-8e1e-91e450ad2abd",
+    customerUuid: "c5955907-aff1-4a3a-afa9-467739251aa5",
     phoneNumber: "+1234567890",
     status: "onboarded",
 };
