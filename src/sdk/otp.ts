@@ -12,43 +12,59 @@ import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Otp extends ClientSDK {
-    /**
-     * Check a code
-     */
-    async check(
-        request?: components.CreateCheckRequest | undefined,
-        options?: RequestOptions
-    ): Promise<components.CreateCheckResponse> {
-        return unwrapAsync(otpCheck(this, request, options));
-    }
+  /**
+   * Check a code
+   */
+  async check(
+    request?: components.CreateCheckRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<components.CreateCheckResponse> {
+    return unwrapAsync(otpCheck(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Send a code
-     */
-    async createAuthentication(
-        request?: components.CreateAuthenticationRequest | undefined,
-        options?: RequestOptions
-    ): Promise<components.CreateAuthenticationResponse> {
-        return unwrapAsync(otpCreateAuthentication(this, request, options));
-    }
+  /**
+   * Send a code
+   */
+  async createAuthentication(
+    request?: components.CreateAuthenticationRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<components.CreateAuthenticationResponse> {
+    return unwrapAsync(otpCreateAuthentication(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Send feedback
-     */
-    async feedback(
-        request?: components.FeedbackRequest | undefined,
-        options?: RequestOptions
-    ): Promise<operations.FeedbackResponse> {
-        return unwrapAsync(otpFeedback(this, request, options));
-    }
+  /**
+   * Send feedback
+   */
+  async feedback(
+    request?: components.FeedbackRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<operations.FeedbackResponse> {
+    return unwrapAsync(otpFeedback(
+      this,
+      request,
+      options,
+    ));
+  }
 
-    /**
-     * Perform a retry
-     */
-    async retry(
-        request?: components.RetryAuthenticationRequest | undefined,
-        options?: RequestOptions
-    ): Promise<components.RetryAuthenticationResponse> {
-        return unwrapAsync(otpRetry(this, request, options));
-    }
+  /**
+   * Perform a retry
+   */
+  async retry(
+    request?: components.RetryAuthenticationRequest | undefined,
+    options?: RequestOptions,
+  ): Promise<components.RetryAuthenticationResponse> {
+    return unwrapAsync(otpRetry(
+      this,
+      request,
+      options,
+    ));
+  }
 }

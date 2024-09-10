@@ -69,17 +69,17 @@ Send an OTP code to a user's phone number.
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.createAuthentication({
-        customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
-        phoneNumber: "+1234567890",
-    });
+  const result = await ding.otp.createAuthentication({
+    customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    phoneNumber: "+1234567890",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -95,18 +95,18 @@ Check that a code entered by a user is valid.
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check({
-        authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-        checkCode: "123456",
-        customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-    });
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -122,14 +122,14 @@ Perform a retry if a user has not received the code.
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.retry();
+  const result = await ding.otp.retry();
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -167,42 +167,45 @@ Validation errors can also occur when either method arguments or data returned f
 
 ```typescript
 import { Ding } from "@ding-live/ding";
-import { ErrorResponse, SDKValidationError } from "@ding-live/ding/models/errors";
+import {
+  ErrorResponse,
+  SDKValidationError,
+} from "@ding-live/ding/models/errors";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    let result;
-    try {
-        result = await ding.otp.check({
-            authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-            checkCode: "123456",
-            customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-        });
+  let result;
+  try {
+    result = await ding.otp.check({
+      authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+      checkCode: "123456",
+      customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+    });
 
-        // Handle the result
-        console.log(result);
-    } catch (err) {
-        switch (true) {
-            case err instanceof SDKValidationError: {
-                // Validation errors can be pretty-printed
-                console.error(err.pretty());
-                // Raw value may also be inspected
-                console.error(err.rawValue);
-                return;
-            }
-            case err instanceof ErrorResponse: {
-                // Handle err.data$: ErrorResponseData
-                console.error(err);
-                return;
-            }
-            default: {
-                throw err;
-            }
-        }
+    // Handle the result
+    console.log(result);
+  } catch (err) {
+    switch (true) {
+      case (err instanceof SDKValidationError): {
+        // Validation errors can be pretty-printed
+        console.error(err.pretty());
+        // Raw value may also be inspected
+        console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof ErrorResponse): {
+        // Handle err.data$: ErrorResponseData
+        console.error(err);
+        return;
+      }
+      default: {
+        throw err;
+      }
     }
+  }
 }
 
 run();
@@ -275,18 +278,18 @@ To authenticate with the API the `apiKey` parameter must be set when initializin
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check({
-        authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-        checkCode: "123456",
-        customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-    });
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -309,19 +312,19 @@ You can override the default server globally by passing a server index to the `s
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    serverIdx: 0,
-    apiKey: "YOUR_API_KEY",
+  serverIdx: 0,
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check({
-        authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-        checkCode: "123456",
-        customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-    });
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -337,19 +340,19 @@ The default server can also be overridden globally by passing a URL to the `serv
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    serverURL: "https://api.ding.live/v1",
-    apiKey: "YOUR_API_KEY",
+  serverURL: "https://api.ding.live/v1",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check({
-        authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-        checkCode: "123456",
-        customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-    });
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -373,32 +376,29 @@ To change the default retry strategy for a single API call, simply provide a ret
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    apiKey: "YOUR_API_KEY",
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check(
-        {
-            authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-            checkCode: "123456",
-            customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-        },
-        {
-            retries: {
-                strategy: "backoff",
-                backoff: {
-                    initialInterval: 1,
-                    maxInterval: 50,
-                    exponent: 1.1,
-                    maxElapsedTime: 100,
-                },
-                retryConnectionErrors: false,
-            },
-        }
-    );
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  }, {
+    retries: {
+      strategy: "backoff",
+      backoff: {
+        initialInterval: 1,
+        maxInterval: 50,
+        exponent: 1.1,
+        maxElapsedTime: 100,
+      },
+      retryConnectionErrors: false,
+    },
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();
@@ -410,28 +410,28 @@ If you'd like to override the default retry strategy for all operations that sup
 import { Ding } from "@ding-live/ding";
 
 const ding = new Ding({
-    retryConfig: {
-        strategy: "backoff",
-        backoff: {
-            initialInterval: 1,
-            maxInterval: 50,
-            exponent: 1.1,
-            maxElapsedTime: 100,
-        },
-        retryConnectionErrors: false,
+  retryConfig: {
+    strategy: "backoff",
+    backoff: {
+      initialInterval: 1,
+      maxInterval: 50,
+      exponent: 1.1,
+      maxElapsedTime: 100,
     },
-    apiKey: "YOUR_API_KEY",
+    retryConnectionErrors: false,
+  },
+  apiKey: "YOUR_API_KEY",
 });
 
 async function run() {
-    const result = await ding.otp.check({
-        authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
-        checkCode: "123456",
-        customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
-    });
+  const result = await ding.otp.check({
+    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    checkCode: "123456",
+    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+  });
 
-    // Handle the result
-    console.log(result);
+  // Handle the result
+  console.log(result);
 }
 
 run();

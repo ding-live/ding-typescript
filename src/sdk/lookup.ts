@@ -8,14 +8,19 @@ import * as components from "../models/components/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Lookup extends ClientSDK {
-    /**
-     * Perform a phone number lookup
-     */
-    async lookup(
-        customerUuid: string,
-        phoneNumber: string,
-        options?: RequestOptions
-    ): Promise<components.LookupResponse> {
-        return unwrapAsync(lookupLookup(this, customerUuid, phoneNumber, options));
-    }
+  /**
+   * Perform a phone number lookup
+   */
+  async lookup(
+    customerUuid: string,
+    phoneNumber: string,
+    options?: RequestOptions,
+  ): Promise<components.LookupResponse> {
+    return unwrapAsync(lookupLookup(
+      this,
+      customerUuid,
+      phoneNumber,
+      options,
+    ));
+  }
 }
