@@ -140,6 +140,14 @@ run();
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
 
+<details open>
+<summary>Available methods</summary>
+
+
+### [lookup](docs/sdks/lookup/README.md)
+
+* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+
 ### [otp](docs/sdks/otp/README.md)
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
@@ -147,9 +155,7 @@ run();
 * [feedback](docs/sdks/otp/README.md#feedback) - Send feedback
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
-### [lookup](docs/sdks/lookup/README.md)
-
-* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+</details>
 <!-- End Available Resources and Operations [operations] -->
 
 <!-- Start Error Handling [errors] -->
