@@ -3,9 +3,9 @@
  */
 
 import { DingCore } from "../core.js";
-import { encodeSimple as encodeSimple$ } from "../lib/encodings.js";
-import * as m$ from "../lib/matchers.js";
-import * as schemas$ from "../lib/schemas.js";
+import { encodeSimple } from "../lib/encodings.js";
+import * as M from "../lib/matchers.js";
+import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
 import { extractSecurity, resolveGlobalSecurity } from "../lib/security.js";
 import { pathToFunc } from "../lib/url.js";
@@ -27,7 +27,7 @@ import { Result } from "../types/fp.js";
  * Perform a phone number lookup
  */
 export async function lookupLookup(
-  client$: DingCore,
+  client: DingCore,
   customerUuid: string,
   phoneNumber: string,
   options?: RequestOptions,
@@ -44,66 +44,66 @@ export async function lookupLookup(
     | ConnectionError
   >
 > {
-  const input$: operations.LookupRequest = {
+  const input: operations.LookupRequest = {
     customerUuid: customerUuid,
     phoneNumber: phoneNumber,
   };
 
-  const parsed$ = schemas$.safeParse(
-    input$,
-    (value$) => operations.LookupRequest$outboundSchema.parse(value$),
+  const parsed = safeParse(
+    input,
+    (value) => operations.LookupRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
-  if (!parsed$.ok) {
-    return parsed$;
+  if (!parsed.ok) {
+    return parsed;
   }
-  const payload$ = parsed$.value;
-  const body$ = null;
+  const payload = parsed.value;
+  const body = null;
 
-  const pathParams$ = {
-    phone_number: encodeSimple$("phone_number", payload$.phone_number, {
+  const pathParams = {
+    phone_number: encodeSimple("phone_number", payload.phone_number, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path$ = pathToFunc("/lookup/{phone_number}")(pathParams$);
+  const path = pathToFunc("/lookup/{phone_number}")(pathParams);
 
-  const headers$ = new Headers({
+  const headers = new Headers({
     Accept: "application/json",
-    "customer-uuid": encodeSimple$("customer-uuid", payload$["customer-uuid"], {
+    "customer-uuid": encodeSimple("customer-uuid", payload["customer-uuid"], {
       explode: false,
       charEncoding: "none",
     }),
   });
 
-  const apiKey$ = await extractSecurity(client$.options$.apiKey);
-  const security$ = apiKey$ == null ? {} : { apiKey: apiKey$ };
+  const secConfig = await extractSecurity(client._options.apiKey);
+  const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
     operationID: "lookup",
     oAuth2Scopes: [],
-    securitySource: client$.options$.apiKey,
+    securitySource: client._options.apiKey,
   };
-  const securitySettings$ = resolveGlobalSecurity(security$);
+  const requestSecurity = resolveGlobalSecurity(securityInput);
 
-  const requestRes = client$.createRequest$(context, {
-    security: securitySettings$,
+  const requestRes = client._createRequest(context, {
+    security: requestSecurity,
     method: "GET",
-    path: path$,
-    headers: headers$,
-    body: body$,
-    timeoutMs: options?.timeoutMs || client$.options$.timeoutMs || -1,
+    path: path,
+    headers: headers,
+    body: body,
+    timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
     return requestRes;
   }
-  const request$ = requestRes.value;
+  const req = requestRes.value;
 
-  const doResult = await client$.do$(request$, {
+  const doResult = await client._do(req, {
     context,
     errorCodes: ["400", "4XX", "5XX"],
     retryConfig: options?.retries
-      || client$.options$.retryConfig,
+      || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
   });
   if (!doResult.ok) {
@@ -111,11 +111,11 @@ export async function lookupLookup(
   }
   const response = doResult.value;
 
-  const responseFields$ = {
-    HttpMeta: { Response: response, Request: request$ },
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
   };
 
-  const [result$] = await m$.match<
+  const [result] = await M.match<
     components.LookupResponse,
     | errors.ErrorResponse
     | SDKError
@@ -126,13 +126,13 @@ export async function lookupLookup(
     | RequestTimeoutError
     | ConnectionError
   >(
-    m$.json(200, components.LookupResponse$inboundSchema),
-    m$.jsonErr(400, errors.ErrorResponse$inboundSchema),
-    m$.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields$ });
-  if (!result$.ok) {
-    return result$;
+    M.json(200, components.LookupResponse$inboundSchema),
+    M.jsonErr(400, errors.ErrorResponse$inboundSchema),
+    M.fail(["4XX", "5XX"]),
+  )(response, { extraFields: responseFields });
+  if (!result.ok) {
+    return result;
   }
 
-  return result$;
+  return result;
 }

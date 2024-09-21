@@ -6,8 +6,8 @@
 import { RetryAuthenticationRequest } from "@ding-live/ding/models/components";
 
 let value: RetryAuthenticationRequest = {
-  authenticationUuid: "2c3f5ad0-19da-41ff-a78f-097b0074f154",
-  customerUuid: "71b5e6e1-3b99-4d48-8e1e-91e450ad2abd",
+  authenticationUuid: "04a49624-999a-4a6e-b56e-cb1ebf2d291d",
+  customerUuid: "961b7bdf-d05b-4280-a30c-35eb02993e98",
 };
 ```
 
