@@ -31,9 +31,9 @@ async function run() {
     checkCode: "123456",
     customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -67,7 +67,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -112,9 +112,9 @@ async function run() {
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
     phoneNumber: "+1234567890",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -147,7 +147,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -193,9 +193,9 @@ async function run() {
     phoneNumber: "+1234567890",
     status: "onboarded",
   });
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -229,7 +229,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -270,9 +270,9 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.retry();
-  
+
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
@@ -302,7 +302,7 @@ async function run() {
   const { value: result } = res;
 
   // Handle the result
-  console.log(result)
+  console.log(result);
 }
 
 run();
