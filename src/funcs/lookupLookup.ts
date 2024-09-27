@@ -34,7 +34,7 @@ export async function lookupLookup(
 ): Promise<
   Result<
     components.LookupResponse,
-    | errors.ErrorResponse
+    | errors.ErrorResponse1
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -117,7 +117,7 @@ export async function lookupLookup(
 
   const [result] = await M.match<
     components.LookupResponse,
-    | errors.ErrorResponse
+    | errors.ErrorResponse1
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -127,7 +127,7 @@ export async function lookupLookup(
     | ConnectionError
   >(
     M.json(200, components.LookupResponse$inboundSchema),
-    M.jsonErr(400, errors.ErrorResponse$inboundSchema),
+    M.jsonErr(400, errors.ErrorResponse1$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

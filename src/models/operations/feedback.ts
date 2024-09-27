@@ -4,11 +4,10 @@
 
 import * as z from "zod";
 import * as components from "../components/index.js";
-import * as errors from "../errors/index.js";
 
 export type FeedbackResponse =
   | components.FeedbackResponse
-  | errors.ErrorResponse;
+  | components.ErrorResponse;
 
 /** @internal */
 export const FeedbackResponse$inboundSchema: z.ZodType<
@@ -17,13 +16,13 @@ export const FeedbackResponse$inboundSchema: z.ZodType<
   unknown
 > = z.union([
   components.FeedbackResponse$inboundSchema,
-  errors.ErrorResponse$inboundSchema,
+  components.ErrorResponse$inboundSchema,
 ]);
 
 /** @internal */
 export type FeedbackResponse$Outbound =
   | components.FeedbackResponse$Outbound
-  | errors.ErrorResponse$Outbound;
+  | components.ErrorResponse$Outbound;
 
 /** @internal */
 export const FeedbackResponse$outboundSchema: z.ZodType<
@@ -32,7 +31,7 @@ export const FeedbackResponse$outboundSchema: z.ZodType<
   FeedbackResponse
 > = z.union([
   components.FeedbackResponse$outboundSchema,
-  errors.ErrorResponse$outboundSchema,
+  components.ErrorResponse$outboundSchema,
 ]);
 
 /**

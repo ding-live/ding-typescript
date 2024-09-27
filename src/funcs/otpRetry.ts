@@ -32,7 +32,7 @@ export async function otpRetry(
 ): Promise<
   Result<
     components.RetryAuthenticationResponse,
-    | errors.ErrorResponse
+    | errors.ErrorResponse1
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -107,7 +107,7 @@ export async function otpRetry(
 
   const [result] = await M.match<
     components.RetryAuthenticationResponse,
-    | errors.ErrorResponse
+    | errors.ErrorResponse1
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -117,7 +117,7 @@ export async function otpRetry(
     | ConnectionError
   >(
     M.json(200, components.RetryAuthenticationResponse$inboundSchema),
-    M.jsonErr(400, errors.ErrorResponse$inboundSchema),
+    M.jsonErr(400, errors.ErrorResponse1$inboundSchema),
     M.fail(["4XX", "5XX"]),
   )(response, { extraFields: responseFields });
   if (!result.ok) {

@@ -1,6 +1,6 @@
 {
   "name": "@ding-live/ding",
-  "version": "0.10.3",
+  "version": "0.11.0",
   "author": "Ding",
   "main": "./index.js",
   "sideEffects": false,

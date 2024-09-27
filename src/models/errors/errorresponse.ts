@@ -37,9 +37,6 @@ export const Code = {
  */
 export type Code = ClosedEnum<typeof Code>;
 
-/**
- * Bad Request
- */
 export type ErrorResponseData = {
   /**
    * A machine-readable code that describes the error.
@@ -55,9 +52,6 @@ export type ErrorResponseData = {
   message?: string | undefined;
 };
 
-/**
- * Bad Request
- */
 export class ErrorResponse extends Error {
   /**
    * A machine-readable code that describes the error.
@@ -82,6 +76,48 @@ export class ErrorResponse extends Error {
     if (err.docUrl != null) this.docUrl = err.docUrl;
 
     this.name = "ErrorResponse";
+  }
+}
+
+export type ErrorResponse1Data = {
+  /**
+   * A machine-readable code that describes the error.
+   */
+  code?: Code | undefined;
+  /**
+   * A link to the documentation that describes the error.
+   */
+  docUrl?: string | undefined;
+  /**
+   * A human-readable message that describes the error.
+   */
+  message?: string | undefined;
+};
+
+export class ErrorResponse1 extends Error {
+  /**
+   * A machine-readable code that describes the error.
+   */
+  code?: Code | undefined;
+  /**
+   * A link to the documentation that describes the error.
+   */
+  docUrl?: string | undefined;
+
+  /** The original data that was passed to this error instance. */
+  data$: ErrorResponse1Data;
+
+  constructor(err: ErrorResponse1Data) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
+
+    if (err.code != null) this.code = err.code;
+    if (err.docUrl != null) this.docUrl = err.docUrl;
+
+    this.name = "ErrorResponse1";
   }
 }
 
@@ -160,4 +196,61 @@ export namespace ErrorResponse$ {
   export const outboundSchema = ErrorResponse$outboundSchema;
   /** @deprecated use `ErrorResponse$Outbound` instead. */
   export type Outbound = ErrorResponse$Outbound;
+}
+
+/** @internal */
+export const ErrorResponse1$inboundSchema: z.ZodType<
+  ErrorResponse1,
+  z.ZodTypeDef,
+  unknown
+> = z.object({
+  code: Code$inboundSchema.optional(),
+  doc_url: z.string().optional(),
+  message: z.string().optional(),
+})
+  .transform((v) => {
+    const remapped = remap$(v, {
+      "doc_url": "docUrl",
+    });
+
+    return new ErrorResponse1(remapped);
+  });
+
+/** @internal */
+export type ErrorResponse1$Outbound = {
+  code?: string | undefined;
+  doc_url?: string | undefined;
+  message?: string | undefined;
+};
+
+/** @internal */
+export const ErrorResponse1$outboundSchema: z.ZodType<
+  ErrorResponse1$Outbound,
+  z.ZodTypeDef,
+  ErrorResponse1
+> = z.instanceof(ErrorResponse1)
+  .transform(v => v.data$)
+  .pipe(
+    z.object({
+      code: Code$outboundSchema.optional(),
+      docUrl: z.string().optional(),
+      message: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        docUrl: "doc_url",
+      });
+    }),
+  );
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace ErrorResponse1$ {
+  /** @deprecated use `ErrorResponse1$inboundSchema` instead. */
+  export const inboundSchema = ErrorResponse1$inboundSchema;
+  /** @deprecated use `ErrorResponse1$outboundSchema` instead. */
+  export const outboundSchema = ErrorResponse1$outboundSchema;
+  /** @deprecated use `ErrorResponse1$Outbound` instead. */
+  export type Outbound = ErrorResponse1$Outbound;
 }

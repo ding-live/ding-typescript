@@ -1,9 +1,9 @@
-# ErrorResponse
+# ErrorResponse1
 
 ## Example Usage
 
 ```typescript
-import { ErrorResponse } from "@ding-live/ding/models/errors";
+import { ErrorResponse1 } from "@ding-live/ding/models/errors";
 
 // No examples available for this model
 ```

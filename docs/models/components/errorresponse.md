@@ -3,9 +3,13 @@
 ## Example Usage
 
 ```typescript
-import { ErrorResponse } from "@ding-live/ding/models/errors";
+import { ErrorResponse } from "@ding-live/ding/models/components";
 
-// No examples available for this model
+let value: ErrorResponse = {
+  code: "invalid_phone_number",
+  docUrl: "https://docs.prelude.so/api-reference/errors#invalid_phone_number",
+  message: "+0 is not a valid phone number",
+};
 ```
 
 ## Fields
