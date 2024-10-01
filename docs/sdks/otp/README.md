@@ -88,11 +88,10 @@ run();
 
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
+| Error Type           | Status Code          | Content Type         |
 | -------------------- | -------------------- | -------------------- |
 | errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 4xx-5xx              | */*                  |
-
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## createAuthentication
 
@@ -168,11 +167,10 @@ run();
 
 ### Errors
 
-| Error Object         | Status Code          | Content Type         |
+| Error Type           | Status Code          | Content Type         |
 | -------------------- | -------------------- | -------------------- |
 | errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 4xx-5xx              | */*                  |
-
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## feedback
 
@@ -250,10 +248,9 @@ run();
 
 ### Errors
 
-| Error Object    | Status Code     | Content Type    |
+| Error Type      | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 4xx-5xx         | */*             |
-
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## retry
 
@@ -323,7 +320,7 @@ run();
 
 ### Errors
 
-| Error Object          | Status Code           | Content Type          |
+| Error Type            | Status Code           | Content Type          |
 | --------------------- | --------------------- | --------------------- |
 | errors.ErrorResponse1 | 400                   | application/json      |
-| errors.SDKError       | 4xx-5xx               | */*                   |
+| errors.SDKError       | 4XX, 5XX              | \*/\*                 |
