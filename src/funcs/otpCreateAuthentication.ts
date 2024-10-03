@@ -42,10 +42,8 @@ export async function otpCreateAuthentication(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       components.CreateAuthenticationRequest$outboundSchema.optional().parse(
         value,

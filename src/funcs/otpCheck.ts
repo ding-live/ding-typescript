@@ -42,10 +42,8 @@ export async function otpCheck(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       components.CreateCheckRequest$outboundSchema.optional().parse(value),
     "Input validation failed",

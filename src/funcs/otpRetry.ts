@@ -42,10 +42,8 @@ export async function otpRetry(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       components.RetryAuthenticationRequest$outboundSchema.optional().parse(
         value,

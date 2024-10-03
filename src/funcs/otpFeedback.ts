@@ -41,10 +41,8 @@ export async function otpFeedback(
     | ConnectionError
   >
 > {
-  const input = request;
-
   const parsed = safeParse(
-    input,
+    request,
     (value) =>
       components.FeedbackRequest$outboundSchema.optional().parse(value),
     "Input validation failed",
