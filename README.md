@@ -488,12 +488,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [lookupLookup](docs/sdks/lookup/README.md#lookup)
-- [otpCheck](docs/sdks/otp/README.md#check)
-- [otpCreateAuthentication](docs/sdks/otp/README.md#createauthentication)
-- [otpFeedback](docs/sdks/otp/README.md#feedback)
-- [otpRetry](docs/sdks/otp/README.md#retry)
-
+- [`lookupLookup`](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+- [`otpCheck`](docs/sdks/otp/README.md#check) - Check a code
+- [`otpCreateAuthentication`](docs/sdks/otp/README.md#createauthentication) - Send a code
+- [`otpFeedback`](docs/sdks/otp/README.md#feedback) - Send feedback
+- [`otpRetry`](docs/sdks/otp/README.md#retry) - Perform a retry
 
 </details>
 <!-- End Standalone functions [standalone-funcs] -->
