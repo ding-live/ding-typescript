@@ -4,18 +4,18 @@
 
 import { lookupLookup } from "../funcs/lookupLookup.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
-import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Lookup extends ClientSDK {
   /**
-   * Perform a phone number lookup
+   * Look up for phone number
    */
   async lookup(
     customerUuid: string,
     phoneNumber: string,
     options?: RequestOptions,
-  ): Promise<components.LookupResponse> {
+  ): Promise<operations.LookupResponse> {
     return unwrapAsync(lookupLookup(
       this,
       customerUuid,

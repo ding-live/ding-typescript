@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: c2a5d8222f4117f238343d6187ef2751
+  docChecksum: 80145f0a6cc3db568a7c7bbd434cf444
   docVersion: 1.0.0
-  speakeasyVersion: 1.421.1
-  generationVersion: 2.438.15
-  releaseVersion: 0.12.1
-  configChecksum: a299d6f1bdebeb907e7d72aa769eaba3
+  speakeasyVersion: 1.423.1
+  generationVersion: 2.442.11
+  releaseVersion: 0.13.0
+  configChecksum: 98a6babc5b8d35d7525a60d0f999e49f
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -27,6 +27,7 @@ features:
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.1.0
+    unions: 2.85.7
 generatedFiles:
   - .eslintrc.cjs
   - .gitattributes
@@ -36,13 +37,28 @@ generatedFiles:
   - RUNTIMES.md
   - USAGE.md
   - docs/lib/utils/retryconfig.md
+  - docs/models/components/attempt.md
+  - docs/models/components/authenticationstatusresponse.md
+  - docs/models/components/authenticationstatusresponsedevicetype.md
+  - docs/models/components/authenticationstatusresponseschemaseventstype.md
+  - docs/models/components/authenticationstatusresponseschemasstatus.md
+  - docs/models/components/authenticationstatusresponseschemastype.md
+  - docs/models/components/authenticationstatusresponsestatus.md
+  - docs/models/components/authenticationstatusresponsetype.md
+  - docs/models/components/balanceupdate.md
+  - docs/models/components/balanceupdatetype.md
+  - docs/models/components/capability.md
+  - docs/models/components/check.md
+  - docs/models/components/checkstatus.md
+  - docs/models/components/code.md
   - docs/models/components/createauthenticationrequest.md
   - docs/models/components/createauthenticationresponse.md
   - docs/models/components/createcheckrequest.md
   - docs/models/components/createcheckresponse.md
-  - docs/models/components/createcheckresponsestatus.md
+  - docs/models/components/deliverystatus.md
   - docs/models/components/devicetype.md
   - docs/models/components/errorresponse.md
+  - docs/models/components/events.md
   - docs/models/components/feedbackrequest.md
   - docs/models/components/feedbackrequeststatus.md
   - docs/models/components/feedbackresponse.md
@@ -52,12 +68,17 @@ generatedFiles:
   - docs/models/components/retryauthenticationresponse.md
   - docs/models/components/retryauthenticationresponsestatus.md
   - docs/models/components/security.md
+  - docs/models/components/signals.md
   - docs/models/components/status.md
-  - docs/models/errors/code.md
-  - docs/models/errors/errorresponse.md
-  - docs/models/errors/errorresponse1.md
+  - docs/models/components/type.md
+  - docs/models/operations/checkresponse.md
+  - docs/models/operations/createauthenticationresponse.md
   - docs/models/operations/feedbackresponse.md
+  - docs/models/operations/getauthenticationstatusrequest.md
+  - docs/models/operations/getauthenticationstatusresponse.md
   - docs/models/operations/lookuprequest.md
+  - docs/models/operations/lookupresponse.md
+  - docs/models/operations/retryresponse.md
   - docs/sdks/ding/README.md
   - docs/sdks/lookup/README.md
   - docs/sdks/otp/README.md
@@ -68,6 +89,7 @@ generatedFiles:
   - src/funcs/otpCheck.ts
   - src/funcs/otpCreateAuthentication.ts
   - src/funcs/otpFeedback.ts
+  - src/funcs/otpGetAuthenticationStatus.ts
   - src/funcs/otpRetry.ts
   - src/hooks/hooks.ts
   - src/hooks/index.ts
@@ -88,6 +110,8 @@ generatedFiles:
   - src/lib/sdks.ts
   - src/lib/security.ts
   - src/lib/url.ts
+  - src/models/components/authenticationstatusresponse.ts
+  - src/models/components/checkstatus.ts
   - src/models/components/createauthenticationrequest.ts
   - src/models/components/createauthenticationresponse.ts
   - src/models/components/createcheckrequest.ts
@@ -100,14 +124,17 @@ generatedFiles:
   - src/models/components/retryauthenticationrequest.ts
   - src/models/components/retryauthenticationresponse.ts
   - src/models/components/security.ts
-  - src/models/errors/errorresponse.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
+  - src/models/operations/check.ts
+  - src/models/operations/createauthentication.ts
   - src/models/operations/feedback.ts
+  - src/models/operations/getauthenticationstatus.ts
   - src/models/operations/index.ts
   - src/models/operations/lookup.ts
+  - src/models/operations/retry.ts
   - src/sdk/index.ts
   - src/sdk/lookup.ts
   - src/sdk/otp.ts
@@ -131,14 +158,18 @@ examples:
           application/json: {"status": "valid"}
         "400":
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   create-authentication:
     speakeasy-default-create-authentication:
       requestBody:
-        application/json: {"customer_uuid": "c9f826e0-deca-41ec-871f-ecd6e8efeb46", "phone_number": "+1234567890"}
+        application/json: {"customer_uuid": "c9f826e0-deca-41ec-871f-ecd6e8efeb46", "locale": "fr-FR", "phone_number": "+1234567890"}
       responses:
         "400":
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
         "200": {}
+        default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   feedback:
     speakeasy-default-feedback:
       requestBody:
@@ -155,6 +186,8 @@ examples:
           application/json: {"remaining_retry": 3, "status": "approved"}
         "400":
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   lookup:
     speakeasy-default-lookup:
       parameters:
@@ -166,4 +199,16 @@ examples:
         "200":
           application/json: {"carrier": "AT&T", "country_code": "US", "line_type": "Mobile", "mcc": "310", "mnc": "410", "phone_number": "+1234567890"}
         "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+  getAuthenticationStatus:
+    speakeasy-default-get-authentication-status:
+      parameters:
+        path:
+          auth_uuid: "d8446450-f2fa-4dd9-806b-df5b8c661f23"
+      responses:
+        "200":
+          application/json: {"events": [], "phone_number": "+1234567890"}
+        default:
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}

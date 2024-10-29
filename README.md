@@ -75,6 +75,7 @@ const ding = new Ding({
 async function run() {
   const result = await ding.otp.createAuthentication({
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    locale: "fr-FR",
     phoneNumber: "+1234567890",
   });
 
@@ -135,6 +136,84 @@ async function run() {
 run();
 
 ```
+
+### Send feedback
+
+Send feedback about the authentication process.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.otp.feedback({
+    customerUuid: "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
+    phoneNumber: "+1234567890",
+    status: "onboarded",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Get authentication status
+
+Get the status of an authentication.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.otp.getAuthenticationStatus(
+    "d8446450-f2fa-4dd9-806b-df5b8c661f23",
+  );
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Look up for phone number
+
+Perform a phone number lookup.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.lookup.lookup(
+    "6e93aa15-9177-4d09-8395-b69ce50db1c8",
+    "<value>",
+  );
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
 <!-- End SDK Example Usage [usage] -->
 
 <!-- Start Available Resources and Operations [operations] -->
@@ -146,13 +225,14 @@ run();
 
 ### [lookup](docs/sdks/lookup/README.md)
 
-* [lookup](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+* [lookup](docs/sdks/lookup/README.md#lookup) - Look up for phone number
 
 ### [otp](docs/sdks/otp/README.md)
 
 * [check](docs/sdks/otp/README.md#check) - Check a code
 * [createAuthentication](docs/sdks/otp/README.md#createauthentication) - Send a code
 * [feedback](docs/sdks/otp/README.md#feedback) - Send feedback
+* [getAuthenticationStatus](docs/sdks/otp/README.md#getauthenticationstatus) - Get authentication status
 * [retry](docs/sdks/otp/README.md#retry) - Perform a retry
 
 </details>
@@ -175,17 +255,13 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `check` method may throw the following errors:
 
-| Error Type           | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 4XX, 5XX             | \*/\*                |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ```typescript
 import { Ding } from "@ding-live/ding";
-import {
-  ErrorResponse,
-  SDKValidationError,
-} from "@ding-live/ding/models/errors";
+import { SDKValidationError } from "@ding-live/ding/models/errors";
 
 const ding = new Ding({
   apiKey: "YOUR_API_KEY",
@@ -209,11 +285,6 @@ async function run() {
         console.error(err.pretty());
         // Raw value may also be inspected
         console.error(err.rawValue);
-        return;
-      }
-      case (err instanceof ErrorResponse): {
-        // Handle err.data$: ErrorResponseData
-        console.error(err);
         return;
       }
       default: {
@@ -488,10 +559,11 @@ To read more about standalone functions, check [FUNCTIONS.md](./FUNCTIONS.md).
 
 <summary>Available standalone functions</summary>
 
-- [`lookupLookup`](docs/sdks/lookup/README.md#lookup) - Perform a phone number lookup
+- [`lookupLookup`](docs/sdks/lookup/README.md#lookup) - Look up for phone number
 - [`otpCheck`](docs/sdks/otp/README.md#check) - Check a code
 - [`otpCreateAuthentication`](docs/sdks/otp/README.md#createauthentication) - Send a code
 - [`otpFeedback`](docs/sdks/otp/README.md#feedback) - Send feedback
+- [`otpGetAuthenticationStatus`](docs/sdks/otp/README.md#getauthenticationstatus) - Get authentication status
 - [`otpRetry`](docs/sdks/otp/README.md#retry) - Perform a retry
 
 </details>

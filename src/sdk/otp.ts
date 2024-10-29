@@ -5,6 +5,7 @@
 import { otpCheck } from "../funcs/otpCheck.js";
 import { otpCreateAuthentication } from "../funcs/otpCreateAuthentication.js";
 import { otpFeedback } from "../funcs/otpFeedback.js";
+import { otpGetAuthenticationStatus } from "../funcs/otpGetAuthenticationStatus.js";
 import { otpRetry } from "../funcs/otpRetry.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
@@ -18,7 +19,7 @@ export class Otp extends ClientSDK {
   async check(
     request?: components.CreateCheckRequest | undefined,
     options?: RequestOptions,
-  ): Promise<components.CreateCheckResponse> {
+  ): Promise<operations.CheckResponse> {
     return unwrapAsync(otpCheck(
       this,
       request,
@@ -32,7 +33,7 @@ export class Otp extends ClientSDK {
   async createAuthentication(
     request?: components.CreateAuthenticationRequest | undefined,
     options?: RequestOptions,
-  ): Promise<components.CreateAuthenticationResponse> {
+  ): Promise<operations.CreateAuthenticationResponse> {
     return unwrapAsync(otpCreateAuthentication(
       this,
       request,
@@ -55,12 +56,26 @@ export class Otp extends ClientSDK {
   }
 
   /**
+   * Get authentication status
+   */
+  async getAuthenticationStatus(
+    authUuid: string,
+    options?: RequestOptions,
+  ): Promise<operations.GetAuthenticationStatusResponse> {
+    return unwrapAsync(otpGetAuthenticationStatus(
+      this,
+      authUuid,
+      options,
+    ));
+  }
+
+  /**
    * Perform a retry
    */
   async retry(
     request?: components.RetryAuthenticationRequest | undefined,
     options?: RequestOptions,
-  ): Promise<components.RetryAuthenticationResponse> {
+  ): Promise<operations.RetryResponse> {
     return unwrapAsync(otpRetry(
       this,
       request,

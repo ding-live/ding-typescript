@@ -4,11 +4,16 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import * as components from "../components/index.js";
 
 export type LookupRequest = {
   customerUuid: string;
   phoneNumber: string;
 };
+
+export type LookupResponse =
+  | components.ErrorResponse
+  | components.LookupResponse;
 
 /** @internal */
 export const LookupRequest$inboundSchema: z.ZodType<
@@ -57,4 +62,42 @@ export namespace LookupRequest$ {
   export const outboundSchema = LookupRequest$outboundSchema;
   /** @deprecated use `LookupRequest$Outbound` instead. */
   export type Outbound = LookupRequest$Outbound;
+}
+
+/** @internal */
+export const LookupResponse$inboundSchema: z.ZodType<
+  LookupResponse,
+  z.ZodTypeDef,
+  unknown
+> = z.union([
+  components.ErrorResponse$inboundSchema,
+  components.LookupResponse$inboundSchema,
+]);
+
+/** @internal */
+export type LookupResponse$Outbound =
+  | components.ErrorResponse$Outbound
+  | components.LookupResponse$Outbound;
+
+/** @internal */
+export const LookupResponse$outboundSchema: z.ZodType<
+  LookupResponse$Outbound,
+  z.ZodTypeDef,
+  LookupResponse
+> = z.union([
+  components.ErrorResponse$outboundSchema,
+  components.LookupResponse$outboundSchema,
+]);
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace LookupResponse$ {
+  /** @deprecated use `LookupResponse$inboundSchema` instead. */
+  export const inboundSchema = LookupResponse$inboundSchema;
+  /** @deprecated use `LookupResponse$outboundSchema` instead. */
+  export const outboundSchema = LookupResponse$outboundSchema;
+  /** @deprecated use `LookupResponse$Outbound` instead. */
+  export type Outbound = LookupResponse$Outbound;
 }

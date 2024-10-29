@@ -14,6 +14,7 @@ const ding = new Ding({
 async function run() {
   const result = await ding.otp.createAuthentication({
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    locale: "fr-FR",
     phoneNumber: "+1234567890",
   });
 
@@ -66,6 +67,84 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.retry();
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Send feedback
+
+Send feedback about the authentication process.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.otp.feedback({
+    customerUuid: "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
+    phoneNumber: "+1234567890",
+    status: "onboarded",
+  });
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Get authentication status
+
+Get the status of an authentication.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.otp.getAuthenticationStatus(
+    "d8446450-f2fa-4dd9-806b-df5b8c661f23",
+  );
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+
+```
+
+### Look up for phone number
+
+Perform a phone number lookup.
+
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.lookup.lookup(
+    "6e93aa15-9177-4d09-8395-b69ce50db1c8",
+    "<value>",
+  );
 
   // Handle the result
   console.log(result);

@@ -61,6 +61,10 @@ export type CreateAuthenticationRequest = {
    */
   isReturningUser?: boolean | undefined;
   /**
+   * A BCP-47 locale indicating the language the SMS should be sent to; if this is not set, the SMS will be sent to the language specified by the country code of the message. If we don't support the language set, the message will be sent in US English (en-US).
+   */
+  locale?: string | undefined;
+  /**
    * The version of the user's device operating system.
    */
   osVersion?: string | undefined;
@@ -68,6 +72,10 @@ export type CreateAuthenticationRequest = {
    * An E.164 formatted phone number to send the OTP to.
    */
   phoneNumber: string;
+  /**
+   * The Sender ID to use when sending the message.
+   */
+  senderId?: string | undefined;
   /**
    * The template id associated with the message content variant to be sent.
    */
@@ -109,8 +117,10 @@ export const CreateAuthenticationRequest$inboundSchema: z.ZodType<
   device_type: DeviceType$inboundSchema.optional(),
   ip: z.string().optional(),
   is_returning_user: z.boolean().optional(),
+  locale: z.string().optional(),
   os_version: z.string().optional(),
   phone_number: z.string(),
+  sender_id: z.string().optional(),
   template_id: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -125,6 +135,7 @@ export const CreateAuthenticationRequest$inboundSchema: z.ZodType<
     "is_returning_user": "isReturningUser",
     "os_version": "osVersion",
     "phone_number": "phoneNumber",
+    "sender_id": "senderId",
     "template_id": "templateId",
   });
 });
@@ -141,8 +152,10 @@ export type CreateAuthenticationRequest$Outbound = {
   device_type?: string | undefined;
   ip?: string | undefined;
   is_returning_user?: boolean | undefined;
+  locale?: string | undefined;
   os_version?: string | undefined;
   phone_number: string;
+  sender_id?: string | undefined;
   template_id?: string | undefined;
 };
 
@@ -162,8 +175,10 @@ export const CreateAuthenticationRequest$outboundSchema: z.ZodType<
   deviceType: DeviceType$outboundSchema.optional(),
   ip: z.string().optional(),
   isReturningUser: z.boolean().optional(),
+  locale: z.string().optional(),
   osVersion: z.string().optional(),
   phoneNumber: z.string(),
+  senderId: z.string().optional(),
   templateId: z.string().optional(),
 }).transform((v) => {
   return remap$(v, {
@@ -178,6 +193,7 @@ export const CreateAuthenticationRequest$outboundSchema: z.ZodType<
     isReturningUser: "is_returning_user",
     osVersion: "os_version",
     phoneNumber: "phone_number",
+    senderId: "sender_id",
     templateId: "template_id",
   });
 });

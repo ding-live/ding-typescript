@@ -4,13 +4,46 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as errors from "../errors/index.js";
+import { ClosedEnum } from "../../types/enums.js";
+
+/**
+ * A machine-readable code that describes the error.
+ */
+export const Code = {
+  AccountInvalid: "account_invalid",
+  AppRealmRequireDeviceType: "app_realm_require_device_type",
+  BadRequest: "bad_request",
+  BlockedNumber: "blocked_number",
+  DuplicatedFeedbackStatus: "duplicated_feedback_status",
+  InternalServerError: "internal_server_error",
+  InvalidAppRealm: "invalid_app_realm",
+  InvalidAppVersion: "invalid_app_version",
+  InvalidAuthUuid: "invalid_auth_uuid",
+  InvalidDeviceId: "invalid_device_id",
+  InvalidDeviceModel: "invalid_device_model",
+  InvalidFeedbackStatus: "invalid_feedback_status",
+  InvalidLine: "invalid_line",
+  InvalidOsVersion: "invalid_os_version",
+  InvalidPhoneNumber: "invalid_phone_number",
+  InvalidSenderId: "invalid_sender_id",
+  InvalidTemplateId: "invalid_template_id",
+  NegativeBalance: "negative_balance",
+  NoAssociatedAuthFound: "no_associated_auth_found",
+  SuspendedAccount: "suspended_account",
+  UnauthorizedSenderId: "unauthorized_sender_id",
+  UnsupportedAppRealmDeviceType: "unsupported_app_realm_device_type",
+  UnsupportedRegion: "unsupported_region",
+} as const;
+/**
+ * A machine-readable code that describes the error.
+ */
+export type Code = ClosedEnum<typeof Code>;
 
 export type ErrorResponse = {
   /**
    * A machine-readable code that describes the error.
    */
-  code?: errors.Code | undefined;
+  code?: Code | undefined;
   /**
    * A link to the documentation that describes the error.
    */
@@ -22,12 +55,32 @@ export type ErrorResponse = {
 };
 
 /** @internal */
+export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
+  Code,
+);
+
+/** @internal */
+export const Code$outboundSchema: z.ZodNativeEnum<typeof Code> =
+  Code$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Code$ {
+  /** @deprecated use `Code$inboundSchema` instead. */
+  export const inboundSchema = Code$inboundSchema;
+  /** @deprecated use `Code$outboundSchema` instead. */
+  export const outboundSchema = Code$outboundSchema;
+}
+
+/** @internal */
 export const ErrorResponse$inboundSchema: z.ZodType<
   ErrorResponse,
   z.ZodTypeDef,
   unknown
 > = z.object({
-  code: errors.Code$inboundSchema.optional(),
+  code: Code$inboundSchema.optional(),
   doc_url: z.string().optional(),
   message: z.string().optional(),
 }).transform((v) => {
@@ -49,7 +102,7 @@ export const ErrorResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   ErrorResponse
 > = z.object({
-  code: errors.Code$outboundSchema.optional(),
+  code: Code$outboundSchema.optional(),
   docUrl: z.string().optional(),
   message: z.string().optional(),
 }).transform((v) => {

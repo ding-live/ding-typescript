@@ -7,11 +7,11 @@ Retrieve up-to-date metadata about a specific phone number
 
 ### Available Operations
 
-* [lookup](#lookup) - Perform a phone number lookup
+* [lookup](#lookup) - Look up for phone number
 
 ## lookup
 
-Perform a phone number lookup
+Look up for phone number
 
 ### Example Usage
 
@@ -74,11 +74,10 @@ run();
 
 ### Response
 
-**Promise\<[components.LookupResponse](../../models/components/lookupresponse.md)\>**
+**Promise\<[operations.LookupResponse](../../models/operations/lookupresponse.md)\>**
 
 ### Errors
 
-| Error Type            | Status Code           | Content Type          |
-| --------------------- | --------------------- | --------------------- |
-| errors.ErrorResponse1 | 400                   | application/json      |
-| errors.SDKError       | 4XX, 5XX              | \*/\*                 |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

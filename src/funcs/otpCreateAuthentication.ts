@@ -17,9 +17,9 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
-import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,8 +31,7 @@ export async function otpCreateAuthentication(
   options?: RequestOptions,
 ): Promise<
   Result<
-    components.CreateAuthenticationResponse,
-    | errors.ErrorResponse
+    operations.CreateAuthenticationResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -89,7 +88,7 @@ export async function otpCreateAuthentication(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["400", "4XX", "5XX"],
+    errorCodes: ["4XX", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -99,13 +98,8 @@ export async function otpCreateAuthentication(
   }
   const response = doResult.value;
 
-  const responseFields = {
-    HttpMeta: { Response: response, Request: req },
-  };
-
   const [result] = await M.match<
-    components.CreateAuthenticationResponse,
-    | errors.ErrorResponse
+    operations.CreateAuthenticationResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -114,10 +108,10 @@ export async function otpCreateAuthentication(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, components.CreateAuthenticationResponse$inboundSchema),
-    M.jsonErr(400, errors.ErrorResponse$inboundSchema),
+    M.json(200, operations.CreateAuthenticationResponse$inboundSchema),
     M.fail(["4XX", "5XX"]),
-  )(response, { extraFields: responseFields });
+    M.json("default", operations.CreateAuthenticationResponse$inboundSchema),
+  )(response);
   if (!result.ok) {
     return result;
   }

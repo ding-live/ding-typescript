@@ -1,0 +1,18 @@
+# BalanceUpdate
+
+## Example Usage
+
+```typescript
+import { BalanceUpdate } from "@ding-live/ding/models/components";
+
+let value: BalanceUpdate = {};
+```
+
+## Fields
+
+| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `amount`                                                                                                                             | *number*                                                                                                                             | :heavy_minus_sign:                                                                                                                   | The amount of the balance update.                                                                                                    |
+| `balanceUpdateType`                                                                                                                  | [components.BalanceUpdateType](../../models/components/balanceupdatetype.md)                                                         | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `createdAt`                                                                                                                          | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                        | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `type`                                                                                                                               | [components.AuthenticationStatusResponseSchemasEventsType](../../models/components/authenticationstatusresponseschemaseventstype.md) | :heavy_minus_sign:                                                                                                                   | The type of the event.                                                                                                               |

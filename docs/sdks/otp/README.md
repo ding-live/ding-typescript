@@ -10,6 +10,7 @@ Send OTP codes to your users using their phone numbers.
 * [check](#check) - Check a code
 * [createAuthentication](#createauthentication) - Send a code
 * [feedback](#feedback) - Send feedback
+* [getAuthenticationStatus](#getauthenticationstatus) - Get authentication status
 * [retry](#retry) - Perform a retry
 
 ## check
@@ -84,14 +85,13 @@ run();
 
 ### Response
 
-**Promise\<[components.CreateCheckResponse](../../models/components/createcheckresponse.md)\>**
+**Promise\<[operations.CheckResponse](../../models/operations/checkresponse.md)\>**
 
 ### Errors
 
-| Error Type           | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 4XX, 5XX             | \*/\*                |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## createAuthentication
 
@@ -109,6 +109,7 @@ const ding = new Ding({
 async function run() {
   const result = await ding.otp.createAuthentication({
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    locale: "fr-FR",
     phoneNumber: "+1234567890",
   });
 
@@ -136,6 +137,7 @@ const ding = new DingCore({
 async function run() {
   const res = await otpCreateAuthentication(ding, {
     customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    locale: "fr-FR",
     phoneNumber: "+1234567890",
   });
 
@@ -163,14 +165,13 @@ run();
 
 ### Response
 
-**Promise\<[components.CreateAuthenticationResponse](../../models/components/createauthenticationresponse.md)\>**
+**Promise\<[operations.CreateAuthenticationResponse](../../models/operations/createauthenticationresponse.md)\>**
 
 ### Errors
 
-| Error Type           | Status Code          | Content Type         |
-| -------------------- | -------------------- | -------------------- |
-| errors.ErrorResponse | 400                  | application/json     |
-| errors.SDKError      | 4XX, 5XX             | \*/\*                |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
 
 ## feedback
 
@@ -252,6 +253,78 @@ run();
 | --------------- | --------------- | --------------- |
 | errors.SDKError | 4XX, 5XX        | \*/\*           |
 
+## getAuthenticationStatus
+
+Get authentication status
+
+### Example Usage
+
+```typescript
+import { Ding } from "@ding-live/ding";
+
+const ding = new Ding({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const result = await ding.otp.getAuthenticationStatus("d8446450-f2fa-4dd9-806b-df5b8c661f23");
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Standalone function
+
+The standalone function version of this method:
+
+```typescript
+import { DingCore } from "@ding-live/ding/core.js";
+import { otpGetAuthenticationStatus } from "@ding-live/ding/funcs/otpGetAuthenticationStatus.js";
+
+// Use `DingCore` for best tree-shaking performance.
+// You can create one instance of it to use across an application.
+const ding = new DingCore({
+  apiKey: "YOUR_API_KEY",
+});
+
+async function run() {
+  const res = await otpGetAuthenticationStatus(ding, "d8446450-f2fa-4dd9-806b-df5b8c661f23");
+
+  if (!res.ok) {
+    throw res.error;
+  }
+
+  const { value: result } = res;
+
+  // Handle the result
+  console.log(result);
+}
+
+run();
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `authUuid`                                                                                                                                                                     | *string*                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                             | N/A                                                                                                                                                                            |
+| `options`                                                                                                                                                                      | RequestOptions                                                                                                                                                                 | :heavy_minus_sign:                                                                                                                                                             | Used to set various options for making HTTP requests.                                                                                                                          |
+| `options.fetchOptions`                                                                                                                                                         | [RequestInit](https://developer.mozilla.org/en-US/docs/Web/API/Request/Request#options)                                                                                        | :heavy_minus_sign:                                                                                                                                                             | Options that are passed to the underlying HTTP request. This can be used to inject extra headers for examples. All `Request` options, except `method` and `body`, are allowed. |
+| `options.retries`                                                                                                                                                              | [RetryConfig](../../lib/utils/retryconfig.md)                                                                                                                                  | :heavy_minus_sign:                                                                                                                                                             | Enables retrying HTTP requests under certain failure conditions.                                                                                                               |
+
+### Response
+
+**Promise\<[operations.GetAuthenticationStatusResponse](../../models/operations/getauthenticationstatusresponse.md)\>**
+
+### Errors
+
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |
+
 ## retry
 
 Perform a retry
@@ -316,11 +389,10 @@ run();
 
 ### Response
 
-**Promise\<[components.RetryAuthenticationResponse](../../models/components/retryauthenticationresponse.md)\>**
+**Promise\<[operations.RetryResponse](../../models/operations/retryresponse.md)\>**
 
 ### Errors
 
-| Error Type            | Status Code           | Content Type          |
-| --------------------- | --------------------- | --------------------- |
-| errors.ErrorResponse1 | 400                   | application/json      |
-| errors.SDKError       | 4XX, 5XX              | \*/\*                 |
+| Error Type      | Status Code     | Content Type    |
+| --------------- | --------------- | --------------- |
+| errors.SDKError | 4XX, 5XX        | \*/\*           |

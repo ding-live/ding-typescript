@@ -22,16 +22,15 @@ import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
- * Look up for phone number
+ * Get authentication status
  */
-export async function lookupLookup(
+export async function otpGetAuthenticationStatus(
   client: DingCore,
-  customerUuid: string,
-  phoneNumber: string,
+  authUuid: string,
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.LookupResponse,
+    operations.GetAuthenticationStatusResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -41,14 +40,14 @@ export async function lookupLookup(
     | ConnectionError
   >
 > {
-  const input: operations.LookupRequest = {
-    customerUuid: customerUuid,
-    phoneNumber: phoneNumber,
+  const input: operations.GetAuthenticationStatusRequest = {
+    authUuid: authUuid,
   };
 
   const parsed = safeParse(
     input,
-    (value) => operations.LookupRequest$outboundSchema.parse(value),
+    (value) =>
+      operations.GetAuthenticationStatusRequest$outboundSchema.parse(value),
     "Input validation failed",
   );
   if (!parsed.ok) {
@@ -58,26 +57,22 @@ export async function lookupLookup(
   const body = null;
 
   const pathParams = {
-    phone_number: encodeSimple("phone_number", payload.phone_number, {
+    auth_uuid: encodeSimple("auth_uuid", payload.auth_uuid, {
       explode: false,
       charEncoding: "percent",
     }),
   };
 
-  const path = pathToFunc("/lookup/{phone_number}")(pathParams);
+  const path = pathToFunc("/authentication/{auth_uuid}")(pathParams);
 
   const headers = new Headers({
     Accept: "application/json",
-    "customer-uuid": encodeSimple("customer-uuid", payload["customer-uuid"], {
-      explode: false,
-      charEncoding: "none",
-    }),
   });
 
   const secConfig = await extractSecurity(client._options.apiKey);
   const securityInput = secConfig == null ? {} : { apiKey: secConfig };
   const context = {
-    operationID: "lookup",
+    operationID: "getAuthenticationStatus",
     oAuth2Scopes: [],
     securitySource: client._options.apiKey,
   };
@@ -109,7 +104,7 @@ export async function lookupLookup(
   const response = doResult.value;
 
   const [result] = await M.match<
-    operations.LookupResponse,
+    operations.GetAuthenticationStatusResponse,
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -118,9 +113,9 @@ export async function lookupLookup(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.LookupResponse$inboundSchema),
+    M.json(200, operations.GetAuthenticationStatusResponse$inboundSchema),
     M.fail(["4XX", "5XX"]),
-    M.json("default", operations.LookupResponse$inboundSchema),
+    M.json("default", operations.GetAuthenticationStatusResponse$inboundSchema),
   )(response);
   if (!result.ok) {
     return result;

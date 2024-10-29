@@ -1,6 +1,7 @@
-# CreateCheckResponseStatus
+# CheckStatus
 
 The status of the check. Possible values are:
+  * `unknown` - The status is unknown.
   * `valid` - The code is valid.
   * `invalid` - The code is invalid.
   * `without_attempt` - No attempt was sent yet, so a check cannot be completed.
@@ -12,13 +13,13 @@ The status of the check. Possible values are:
 ## Example Usage
 
 ```typescript
-import { CreateCheckResponseStatus } from "@ding-live/ding/models/components";
+import { CheckStatus } from "@ding-live/ding/models/components";
 
-let value: CreateCheckResponseStatus = "valid";
+let value: CheckStatus = "valid";
 ```
 
 ## Values
 
 ```typescript
-"valid" | "invalid" | "without_attempt" | "rate_limited" | "already_validated" | "expired_auth"
+"unknown" | "valid" | "invalid" | "without_attempt" | "rate_limited" | "already_validated" | "expired_auth"
 ```
