@@ -1,0 +1,31 @@
+speakeasyVersion: 1.423.2
+sources:
+    my-source:
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:c3a018b8ce9ee85f99b735c4e87950763a285f1b79ad4c01a6a1a92ed4839efc
+        sourceBlobDigest: sha256:408f69a3052eeaa99509ce0811301cbf4e12aab87613930f6d2fb41f94803bf5
+        tags:
+            - latest
+            - main
+targets:
+    '@ding-live/ding':
+        source: my-source
+        sourceNamespace: my-source
+        sourceRevisionDigest: sha256:c3a018b8ce9ee85f99b735c4e87950763a285f1b79ad4c01a6a1a92ed4839efc
+        sourceBlobDigest: sha256:408f69a3052eeaa99509ce0811301cbf4e12aab87613930f6d2fb41f94803bf5
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        my-source:
+            inputs:
+                - location: https://raw.githubusercontent.com/ding-live/openapi/main/ding.yaml
+            registry:
+                location: registry.speakeasyapi.dev/ding/ding/my-source
+    targets:
+        '@ding-live/ding':
+            target: typescript
+            source: my-source
+            publish:
+                npm:
+                    token: $NPM_TOKEN

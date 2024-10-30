@@ -109,6 +109,10 @@ export type DeliveryStatus = {
   attemptNumber?: number | undefined;
   createdAt?: Date | undefined;
   /**
+   * The date and time from the provider.
+   */
+  originatedAt?: Date | undefined;
+  /**
    * The status of the delivery. Possible values are:
    *
    * @remarks
@@ -494,6 +498,9 @@ export const DeliveryStatus$inboundSchema: z.ZodType<
   attempt_number: z.number().int().optional(),
   created_at: z.string().datetime({ offset: true }).transform(v => new Date(v))
     .optional(),
+  originated_at: z.string().datetime({ offset: true }).transform(v =>
+    new Date(v)
+  ).optional(),
   status: AuthenticationStatusResponseStatus$inboundSchema.optional(),
   type: AuthenticationStatusResponseSchemasType$inboundSchema.optional(),
 }).transform((v) => {
@@ -501,6 +508,7 @@ export const DeliveryStatus$inboundSchema: z.ZodType<
     "attempt_id": "attemptId",
     "attempt_number": "attemptNumber",
     "created_at": "createdAt",
+    "originated_at": "originatedAt",
   });
 });
 
@@ -509,6 +517,7 @@ export type DeliveryStatus$Outbound = {
   attempt_id?: string | undefined;
   attempt_number?: number | undefined;
   created_at?: string | undefined;
+  originated_at?: string | undefined;
   status?: string | undefined;
   type?: string | undefined;
 };
@@ -522,6 +531,7 @@ export const DeliveryStatus$outboundSchema: z.ZodType<
   attemptId: z.string().optional(),
   attemptNumber: z.number().int().optional(),
   createdAt: z.date().transform(v => v.toISOString()).optional(),
+  originatedAt: z.date().transform(v => v.toISOString()).optional(),
   status: AuthenticationStatusResponseStatus$outboundSchema.optional(),
   type: AuthenticationStatusResponseSchemasType$outboundSchema.optional(),
 }).transform((v) => {
@@ -529,6 +539,7 @@ export const DeliveryStatus$outboundSchema: z.ZodType<
     attemptId: "attempt_id",
     attemptNumber: "attempt_number",
     createdAt: "created_at",
+    originatedAt: "originated_at",
   });
 });
 
