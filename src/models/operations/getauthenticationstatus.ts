@@ -4,15 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
-import * as components from "../components/index.js";
 
 export type GetAuthenticationStatusRequest = {
   authUuid: string;
 };
-
-export type GetAuthenticationStatusResponse =
-  | components.ErrorResponse
-  | components.AuthenticationStatusResponse;
 
 /** @internal */
 export const GetAuthenticationStatusRequest$inboundSchema: z.ZodType<
@@ -56,42 +51,4 @@ export namespace GetAuthenticationStatusRequest$ {
   export const outboundSchema = GetAuthenticationStatusRequest$outboundSchema;
   /** @deprecated use `GetAuthenticationStatusRequest$Outbound` instead. */
   export type Outbound = GetAuthenticationStatusRequest$Outbound;
-}
-
-/** @internal */
-export const GetAuthenticationStatusResponse$inboundSchema: z.ZodType<
-  GetAuthenticationStatusResponse,
-  z.ZodTypeDef,
-  unknown
-> = z.union([
-  components.ErrorResponse$inboundSchema,
-  components.AuthenticationStatusResponse$inboundSchema,
-]);
-
-/** @internal */
-export type GetAuthenticationStatusResponse$Outbound =
-  | components.ErrorResponse$Outbound
-  | components.AuthenticationStatusResponse$Outbound;
-
-/** @internal */
-export const GetAuthenticationStatusResponse$outboundSchema: z.ZodType<
-  GetAuthenticationStatusResponse$Outbound,
-  z.ZodTypeDef,
-  GetAuthenticationStatusResponse
-> = z.union([
-  components.ErrorResponse$outboundSchema,
-  components.AuthenticationStatusResponse$outboundSchema,
-]);
-
-/**
- * @internal
- * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
- */
-export namespace GetAuthenticationStatusResponse$ {
-  /** @deprecated use `GetAuthenticationStatusResponse$inboundSchema` instead. */
-  export const inboundSchema = GetAuthenticationStatusResponse$inboundSchema;
-  /** @deprecated use `GetAuthenticationStatusResponse$outboundSchema` instead. */
-  export const outboundSchema = GetAuthenticationStatusResponse$outboundSchema;
-  /** @deprecated use `GetAuthenticationStatusResponse$Outbound` instead. */
-  export type Outbound = GetAuthenticationStatusResponse$Outbound;
 }

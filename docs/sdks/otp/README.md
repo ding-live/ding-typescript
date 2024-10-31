@@ -85,13 +85,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.CheckResponse](../../models/operations/checkresponse.md)\>**
+**Promise\<[components.CreateCheckResponse](../../models/components/createcheckresponse.md)\>**
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## createAuthentication
 
@@ -165,13 +166,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.CreateAuthenticationResponse](../../models/operations/createauthenticationresponse.md)\>**
+**Promise\<[components.CreateAuthenticationResponse](../../models/components/createauthenticationresponse.md)\>**
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## feedback
 
@@ -245,13 +247,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.FeedbackResponse](../../models/operations/feedbackresponse.md)\>**
+**Promise\<[components.FeedbackResponse](../../models/components/feedbackresponse.md)\>**
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## getAuthenticationStatus
 
@@ -317,13 +320,14 @@ run();
 
 ### Response
 
-**Promise\<[operations.GetAuthenticationStatusResponse](../../models/operations/getauthenticationstatusresponse.md)\>**
+**Promise\<[components.AuthenticationStatusResponse](../../models/components/authenticationstatusresponse.md)\>**
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ## retry
 
@@ -389,10 +393,11 @@ run();
 
 ### Response
 
-**Promise\<[operations.RetryResponse](../../models/operations/retryresponse.md)\>**
+**Promise\<[components.RetryAuthenticationResponse](../../models/components/retryauthenticationresponse.md)\>**
 
 ### Errors
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |

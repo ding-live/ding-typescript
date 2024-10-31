@@ -7,7 +7,7 @@ The capability of the attempt.
 ```typescript
 import { Capability } from "@ding-live/ding/models/components";
 
-let value: Capability = "text";
+let value: Capability = "rcs";
 ```
 
 ## Values

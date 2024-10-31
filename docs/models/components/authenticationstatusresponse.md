@@ -7,10 +7,7 @@ import { AuthenticationStatusResponse } from "@ding-live/ding/models/components"
 
 let value: AuthenticationStatusResponse = {
   events: [
-    {
-      code: "123456",
-      status: "valid",
-    },
+    {},
   ],
   phoneNumber: "+1234567890",
 };

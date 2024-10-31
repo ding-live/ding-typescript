@@ -7,7 +7,7 @@ The type of device the user is using.
 ```typescript
 import { AuthenticationStatusResponseDeviceType } from "@ding-live/ding/models/components";
 
-let value: AuthenticationStatusResponseDeviceType = "IOS";
+let value: AuthenticationStatusResponseDeviceType = "ANDROID";
 ```
 
 ## Values

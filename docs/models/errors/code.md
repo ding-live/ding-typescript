@@ -5,7 +5,7 @@ A machine-readable code that describes the error.
 ## Example Usage
 
 ```typescript
-import { Code } from "@ding-live/ding/models/components";
+import { Code } from "@ding-live/ding/models/errors";
 
 let value: Code = "invalid_phone_number";
 ```

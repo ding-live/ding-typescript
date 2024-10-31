@@ -6,8 +6,8 @@
 import { CreateAuthenticationRequest } from "@ding-live/ding/models/components";
 
 let value: CreateAuthenticationRequest = {
-  customerUuid: "4a496249-99aa-46e5-a6ec-b1ebf2d291dc",
-  locale: "el-GR",
+  customerUuid: "35d1d1f7-f9b0-4414-9156-1b94819e5a2b",
+  locale: "en-US",
   phoneNumber: "+1234567890",
 };
 ```

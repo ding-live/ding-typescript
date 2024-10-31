@@ -6,9 +6,9 @@
 import { CreateCheckRequest } from "@ding-live/ding/models/components";
 
 let value: CreateCheckRequest = {
-  authenticationUuid: "235d1d1f-7f9b-4041-a415-61b94819e5a2",
+  authenticationUuid: "8b986a7e-f6c8-49e1-910d-cdfc7c1a2f86",
   checkCode: "123456",
-  customerUuid: "4290d0a4-bf39-4993-9f7d-b4d6e9ebb8fa",
+  customerUuid: "c790999f-a56b-40aa-8325-597f132a4732",
 };
 ```
 

@@ -17,9 +17,9 @@ import {
   RequestTimeoutError,
   UnexpectedClientError,
 } from "../models/errors/httpclienterrors.js";
+import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
-import * as operations from "../models/operations/index.js";
 import { Result } from "../types/fp.js";
 
 /**
@@ -31,7 +31,8 @@ export async function otpRetry(
   options?: RequestOptions,
 ): Promise<
   Result<
-    operations.RetryResponse,
+    components.RetryAuthenticationResponse,
+    | errors.ErrorResponse
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -88,7 +89,7 @@ export async function otpRetry(
 
   const doResult = await client._do(req, {
     context,
-    errorCodes: ["4XX", "5XX"],
+    errorCodes: ["400", "4XX", "5XX"],
     retryConfig: options?.retries
       || client._options.retryConfig,
     retryCodes: options?.retryCodes || ["429", "500", "502", "503", "504"],
@@ -98,8 +99,13 @@ export async function otpRetry(
   }
   const response = doResult.value;
 
+  const responseFields = {
+    HttpMeta: { Response: response, Request: req },
+  };
+
   const [result] = await M.match<
-    operations.RetryResponse,
+    components.RetryAuthenticationResponse,
+    | errors.ErrorResponse
     | SDKError
     | SDKValidationError
     | UnexpectedClientError
@@ -108,10 +114,10 @@ export async function otpRetry(
     | RequestTimeoutError
     | ConnectionError
   >(
-    M.json(200, operations.RetryResponse$inboundSchema),
+    M.json(200, components.RetryAuthenticationResponse$inboundSchema),
+    M.jsonErr(400, errors.ErrorResponse$inboundSchema),
     M.fail(["4XX", "5XX"]),
-    M.json("default", operations.RetryResponse$inboundSchema),
-  )(response);
+  )(response, { extraFields: responseFields });
   if (!result.ok) {
     return result;
   }

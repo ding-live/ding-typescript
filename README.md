@@ -255,13 +255,17 @@ If a HTTP request fails, an operation my also throw an error from the `models/er
 
 In addition, when custom error responses are specified for an operation, the SDK may throw their associated Error type. You can refer to respective *Errors* tables in SDK docs for more details on possible error types for each operation. For example, the `check` method may throw the following errors:
 
-| Error Type      | Status Code     | Content Type    |
-| --------------- | --------------- | --------------- |
-| errors.SDKError | 4XX, 5XX        | \*/\*           |
+| Error Type           | Status Code          | Content Type         |
+| -------------------- | -------------------- | -------------------- |
+| errors.ErrorResponse | 400                  | application/json     |
+| errors.SDKError      | 4XX, 5XX             | \*/\*                |
 
 ```typescript
 import { Ding } from "@ding-live/ding";
-import { SDKValidationError } from "@ding-live/ding/models/errors";
+import {
+  ErrorResponse,
+  SDKValidationError,
+} from "@ding-live/ding/models/errors";
 
 const ding = new Ding({
   apiKey: "YOUR_API_KEY",
@@ -285,6 +289,11 @@ async function run() {
         console.error(err.pretty());
         // Raw value may also be inspected
         console.error(err.rawValue);
+        return;
+      }
+      case (err instanceof ErrorResponse): {
+        // Handle err.data$: ErrorResponseData
+        console.error(err);
         return;
       }
       default: {

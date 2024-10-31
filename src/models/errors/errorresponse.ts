@@ -39,7 +39,7 @@ export const Code = {
  */
 export type Code = ClosedEnum<typeof Code>;
 
-export type ErrorResponse = {
+export type ErrorResponseData = {
   /**
    * A machine-readable code that describes the error.
    */
@@ -53,6 +53,33 @@ export type ErrorResponse = {
    */
   message?: string | undefined;
 };
+
+export class ErrorResponse extends Error {
+  /**
+   * A machine-readable code that describes the error.
+   */
+  code?: Code | undefined;
+  /**
+   * A link to the documentation that describes the error.
+   */
+  docUrl?: string | undefined;
+
+  /** The original data that was passed to this error instance. */
+  data$: ErrorResponseData;
+
+  constructor(err: ErrorResponseData) {
+    const message = "message" in err && typeof err.message === "string"
+      ? err.message
+      : `API error occurred: ${JSON.stringify(err)}`;
+    super(message);
+    this.data$ = err;
+
+    if (err.code != null) this.code = err.code;
+    if (err.docUrl != null) this.docUrl = err.docUrl;
+
+    this.name = "ErrorResponse";
+  }
+}
 
 /** @internal */
 export const Code$inboundSchema: z.ZodNativeEnum<typeof Code> = z.nativeEnum(
@@ -83,11 +110,14 @@ export const ErrorResponse$inboundSchema: z.ZodType<
   code: Code$inboundSchema.optional(),
   doc_url: z.string().optional(),
   message: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    "doc_url": "docUrl",
+})
+  .transform((v) => {
+    const remapped = remap$(v, {
+      "doc_url": "docUrl",
+    });
+
+    return new ErrorResponse(remapped);
   });
-});
 
 /** @internal */
 export type ErrorResponse$Outbound = {
@@ -101,15 +131,19 @@ export const ErrorResponse$outboundSchema: z.ZodType<
   ErrorResponse$Outbound,
   z.ZodTypeDef,
   ErrorResponse
-> = z.object({
-  code: Code$outboundSchema.optional(),
-  docUrl: z.string().optional(),
-  message: z.string().optional(),
-}).transform((v) => {
-  return remap$(v, {
-    docUrl: "doc_url",
-  });
-});
+> = z.instanceof(ErrorResponse)
+  .transform(v => v.data$)
+  .pipe(
+    z.object({
+      code: Code$outboundSchema.optional(),
+      docUrl: z.string().optional(),
+      message: z.string().optional(),
+    }).transform((v) => {
+      return remap$(v, {
+        docUrl: "doc_url",
+      });
+    }),
+  );
 
 /**
  * @internal

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: 0e24d2251525fd6aa2e5edcae1b0c57f
+  docChecksum: cdd98ec37d038287e527cb85bbed139b
   docVersion: 1.0.0
-  speakeasyVersion: 1.423.2
-  generationVersion: 2.442.11
-  releaseVersion: 0.13.1
-  configChecksum: a4c5ef258bf379f557440811331b2aa1
+  speakeasyVersion: 1.423.5
+  generationVersion: 2.445.1
+  releaseVersion: 0.13.2
+  configChecksum: 4968d43eb733ada16296601dd20f9898
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -50,14 +50,12 @@ generatedFiles:
   - docs/models/components/capability.md
   - docs/models/components/check.md
   - docs/models/components/checkstatus.md
-  - docs/models/components/code.md
   - docs/models/components/createauthenticationrequest.md
   - docs/models/components/createauthenticationresponse.md
   - docs/models/components/createcheckrequest.md
   - docs/models/components/createcheckresponse.md
   - docs/models/components/deliverystatus.md
   - docs/models/components/devicetype.md
-  - docs/models/components/errorresponse.md
   - docs/models/components/events.md
   - docs/models/components/feedbackrequest.md
   - docs/models/components/feedbackrequeststatus.md
@@ -71,14 +69,10 @@ generatedFiles:
   - docs/models/components/signals.md
   - docs/models/components/status.md
   - docs/models/components/type.md
-  - docs/models/operations/checkresponse.md
-  - docs/models/operations/createauthenticationresponse.md
-  - docs/models/operations/feedbackresponse.md
+  - docs/models/errors/code.md
+  - docs/models/errors/errorresponse.md
   - docs/models/operations/getauthenticationstatusrequest.md
-  - docs/models/operations/getauthenticationstatusresponse.md
   - docs/models/operations/lookuprequest.md
-  - docs/models/operations/lookupresponse.md
-  - docs/models/operations/retryresponse.md
   - docs/sdks/ding/README.md
   - docs/sdks/lookup/README.md
   - docs/sdks/otp/README.md
@@ -116,7 +110,6 @@ generatedFiles:
   - src/models/components/createauthenticationresponse.ts
   - src/models/components/createcheckrequest.ts
   - src/models/components/createcheckresponse.ts
-  - src/models/components/errorresponse.ts
   - src/models/components/feedbackrequest.ts
   - src/models/components/feedbackresponse.ts
   - src/models/components/index.ts
@@ -124,17 +117,14 @@ generatedFiles:
   - src/models/components/retryauthenticationrequest.ts
   - src/models/components/retryauthenticationresponse.ts
   - src/models/components/security.ts
+  - src/models/errors/errorresponse.ts
   - src/models/errors/httpclienterrors.ts
   - src/models/errors/index.ts
   - src/models/errors/sdkerror.ts
   - src/models/errors/sdkvalidationerror.ts
-  - src/models/operations/check.ts
-  - src/models/operations/createauthentication.ts
-  - src/models/operations/feedback.ts
   - src/models/operations/getauthenticationstatus.ts
   - src/models/operations/index.ts
   - src/models/operations/lookup.ts
-  - src/models/operations/retry.ts
   - src/sdk/index.ts
   - src/sdk/lookup.ts
   - src/sdk/otp.ts
@@ -179,6 +169,8 @@ examples:
           application/json: {"uuid": "123e4567-e89b-12d3-a456-4266141740a0"}
         default:
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        "400":
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
   retry:
     speakeasy-default-retry:
       responses:
@@ -211,4 +203,6 @@ examples:
         "200":
           application/json: {"events": [], "phone_number": "+1234567890"}
         default:
+          application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}
+        "400":
           application/json: {"code": "invalid_phone_number", "doc_url": "https://docs.prelude.so/api-reference/errors#invalid_phone_number", "message": "+0 is not a valid phone number"}

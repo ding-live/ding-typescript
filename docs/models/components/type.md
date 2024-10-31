@@ -7,7 +7,7 @@ The type of the event.
 ```typescript
 import { Type } from "@ding-live/ding/models/components";
 
-let value: Type = "check";
+let value: Type = "delivery_status";
 ```
 
 ## Values

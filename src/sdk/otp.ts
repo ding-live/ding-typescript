@@ -9,7 +9,6 @@ import { otpGetAuthenticationStatus } from "../funcs/otpGetAuthenticationStatus.
 import { otpRetry } from "../funcs/otpRetry.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
-import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Otp extends ClientSDK {
@@ -19,7 +18,7 @@ export class Otp extends ClientSDK {
   async check(
     request?: components.CreateCheckRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.CheckResponse> {
+  ): Promise<components.CreateCheckResponse> {
     return unwrapAsync(otpCheck(
       this,
       request,
@@ -33,7 +32,7 @@ export class Otp extends ClientSDK {
   async createAuthentication(
     request?: components.CreateAuthenticationRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.CreateAuthenticationResponse> {
+  ): Promise<components.CreateAuthenticationResponse> {
     return unwrapAsync(otpCreateAuthentication(
       this,
       request,
@@ -47,7 +46,7 @@ export class Otp extends ClientSDK {
   async feedback(
     request?: components.FeedbackRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.FeedbackResponse> {
+  ): Promise<components.FeedbackResponse> {
     return unwrapAsync(otpFeedback(
       this,
       request,
@@ -61,7 +60,7 @@ export class Otp extends ClientSDK {
   async getAuthenticationStatus(
     authUuid: string,
     options?: RequestOptions,
-  ): Promise<operations.GetAuthenticationStatusResponse> {
+  ): Promise<components.AuthenticationStatusResponse> {
     return unwrapAsync(otpGetAuthenticationStatus(
       this,
       authUuid,
@@ -75,7 +74,7 @@ export class Otp extends ClientSDK {
   async retry(
     request?: components.RetryAuthenticationRequest | undefined,
     options?: RequestOptions,
-  ): Promise<operations.RetryResponse> {
+  ): Promise<components.RetryAuthenticationResponse> {
     return unwrapAsync(otpRetry(
       this,
       request,

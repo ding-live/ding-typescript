@@ -8,7 +8,6 @@ export * from "./createauthenticationrequest.js";
 export * from "./createauthenticationresponse.js";
 export * from "./createcheckrequest.js";
 export * from "./createcheckresponse.js";
-export * from "./errorresponse.js";
 export * from "./feedbackrequest.js";
 export * from "./feedbackresponse.js";
 export * from "./lookupresponse.js";

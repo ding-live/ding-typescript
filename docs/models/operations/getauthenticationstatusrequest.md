@@ -6,7 +6,7 @@
 import { GetAuthenticationStatusRequest } from "@ding-live/ding/models/operations";
 
 let value: GetAuthenticationStatusRequest = {
-  authUuid: "8b986a7e-f6c8-49e1-910d-cdfc7c1a2f86",
+  authUuid: "64b6201a-78ef-43a4-a0c5-69dad4c2fa3f",
 };
 ```
 
