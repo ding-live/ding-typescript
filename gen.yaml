@@ -11,7 +11,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 typescript:
-  version: 0.14.2
+  version: 0.14.3
   additionalDependencies:
     dependencies: {}
     devDependencies: {}
@@ -19,6 +19,7 @@ typescript:
   additionalPackageJSON: {}
   author: Ding
   clientServerStatusCodesAsErrors: true
+  defaultErrorName: SDKError
   enumFormat: union
   flattenGlobalSecurity: true
   flatteningOrder: body-first
