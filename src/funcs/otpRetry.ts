@@ -72,6 +72,9 @@ export async function otpRetry(
   const context = {
     operationID: "retry",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

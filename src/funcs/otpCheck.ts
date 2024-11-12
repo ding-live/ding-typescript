@@ -70,6 +70,9 @@ export async function otpCheck(
   const context = {
     operationID: "check",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig

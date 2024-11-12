@@ -70,6 +70,9 @@ export async function otpFeedback(
   const context = {
     operationID: "feedback",
     oAuth2Scopes: [],
+
+    resolvedSecurity: requestSecurity,
+
     securitySource: client._options.apiKey,
     retryConfig: options?.retries
       || client._options.retryConfig
