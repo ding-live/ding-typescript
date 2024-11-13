@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.438.1
   generationVersion: 2.457.2
-  releaseVersion: 0.14.6
-  configChecksum: e49e643eb64c854257117b42c5fc5dcb
+  releaseVersion: 0.14.7
+  configChecksum: 924ecba0c2b9445d5f13ddc04d8588dc
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
