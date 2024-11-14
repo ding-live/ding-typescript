@@ -127,6 +127,10 @@ export type LookupResponse = {
    * An E.164 formatted phone number.
    */
   phoneNumber?: string | undefined;
+  /**
+   * Whether the phone number is in our database of disposable, temporary phone numbers
+   */
+  temporaryPhoneNumber?: boolean | undefined;
 };
 
 /** @internal */
@@ -161,12 +165,14 @@ export const LookupResponse$inboundSchema: z.ZodType<
   mnc: z.string().optional(),
   number_ported: z.boolean().optional(),
   phone_number: z.string().optional(),
+  temporary_phone_number: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     "country_code": "countryCode",
     "line_type": "lineType",
     "number_ported": "numberPorted",
     "phone_number": "phoneNumber",
+    "temporary_phone_number": "temporaryPhoneNumber",
   });
 });
 
@@ -179,6 +185,7 @@ export type LookupResponse$Outbound = {
   mnc?: string | undefined;
   number_ported?: boolean | undefined;
   phone_number?: string | undefined;
+  temporary_phone_number?: boolean | undefined;
 };
 
 /** @internal */
@@ -194,12 +201,14 @@ export const LookupResponse$outboundSchema: z.ZodType<
   mnc: z.string().optional(),
   numberPorted: z.boolean().optional(),
   phoneNumber: z.string().optional(),
+  temporaryPhoneNumber: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
     countryCode: "country_code",
     lineType: "line_type",
     numberPorted: "number_ported",
     phoneNumber: "phone_number",
+    temporaryPhoneNumber: "temporary_phone_number",
   });
 });
 
