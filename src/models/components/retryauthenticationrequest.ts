@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type RetryAuthenticationRequest = {
   /**
@@ -63,4 +66,22 @@ export namespace RetryAuthenticationRequest$ {
   export const outboundSchema = RetryAuthenticationRequest$outboundSchema;
   /** @deprecated use `RetryAuthenticationRequest$Outbound` instead. */
   export type Outbound = RetryAuthenticationRequest$Outbound;
+}
+
+export function retryAuthenticationRequestToJSON(
+  retryAuthenticationRequest: RetryAuthenticationRequest,
+): string {
+  return JSON.stringify(
+    RetryAuthenticationRequest$outboundSchema.parse(retryAuthenticationRequest),
+  );
+}
+
+export function retryAuthenticationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<RetryAuthenticationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetryAuthenticationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetryAuthenticationRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CheckStatus,
   CheckStatus$inboundSchema,
@@ -63,4 +66,22 @@ export namespace CreateCheckResponse$ {
   export const outboundSchema = CreateCheckResponse$outboundSchema;
   /** @deprecated use `CreateCheckResponse$Outbound` instead. */
   export type Outbound = CreateCheckResponse$Outbound;
+}
+
+export function createCheckResponseToJSON(
+  createCheckResponse: CreateCheckResponse,
+): string {
+  return JSON.stringify(
+    CreateCheckResponse$outboundSchema.parse(createCheckResponse),
+  );
+}
+
+export function createCheckResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCheckResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCheckResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCheckResponse' from JSON`,
+  );
 }

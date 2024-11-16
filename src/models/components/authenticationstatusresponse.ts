@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 import {
   CheckStatus,
   CheckStatus$inboundSchema,
@@ -266,8 +269,10 @@ export type Events = BalanceUpdate | Check | DeliveryStatus | Attempt;
  * The type of device the user is using.
  */
 export const AuthenticationStatusResponseDeviceType = {
-  Ios: "IOS",
   Android: "ANDROID",
+  Ios: "IOS",
+  Ipados: "IPADOS",
+  Tvos: "TVOS",
   Web: "WEB",
 } as const;
 /**
@@ -443,6 +448,20 @@ export namespace BalanceUpdate$ {
   export type Outbound = BalanceUpdate$Outbound;
 }
 
+export function balanceUpdateToJSON(balanceUpdate: BalanceUpdate): string {
+  return JSON.stringify(BalanceUpdate$outboundSchema.parse(balanceUpdate));
+}
+
+export function balanceUpdateFromJSON(
+  jsonString: string,
+): SafeParseResult<BalanceUpdate, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => BalanceUpdate$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'BalanceUpdate' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthenticationStatusResponseStatus$inboundSchema: z.ZodNativeEnum<
   typeof AuthenticationStatusResponseStatus
@@ -556,6 +575,20 @@ export namespace DeliveryStatus$ {
   export type Outbound = DeliveryStatus$Outbound;
 }
 
+export function deliveryStatusToJSON(deliveryStatus: DeliveryStatus): string {
+  return JSON.stringify(DeliveryStatus$outboundSchema.parse(deliveryStatus));
+}
+
+export function deliveryStatusFromJSON(
+  jsonString: string,
+): SafeParseResult<DeliveryStatus, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => DeliveryStatus$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'DeliveryStatus' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthenticationStatusResponseType$inboundSchema: z.ZodNativeEnum<
   typeof AuthenticationStatusResponseType
@@ -630,6 +663,20 @@ export namespace Check$ {
   export const outboundSchema = Check$outboundSchema;
   /** @deprecated use `Check$Outbound` instead. */
   export type Outbound = Check$Outbound;
+}
+
+export function checkToJSON(check: Check): string {
+  return JSON.stringify(Check$outboundSchema.parse(check));
+}
+
+export function checkFromJSON(
+  jsonString: string,
+): SafeParseResult<Check, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Check$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Check' from JSON`,
+  );
 }
 
 /** @internal */
@@ -762,6 +809,20 @@ export namespace Attempt$ {
   export type Outbound = Attempt$Outbound;
 }
 
+export function attemptToJSON(attempt: Attempt): string {
+  return JSON.stringify(Attempt$outboundSchema.parse(attempt));
+}
+
+export function attemptFromJSON(
+  jsonString: string,
+): SafeParseResult<Attempt, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Attempt$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Attempt' from JSON`,
+  );
+}
+
 /** @internal */
 export const Events$inboundSchema: z.ZodType<Events, z.ZodTypeDef, unknown> = z
   .union([
@@ -801,6 +862,20 @@ export namespace Events$ {
   export const outboundSchema = Events$outboundSchema;
   /** @deprecated use `Events$Outbound` instead. */
   export type Outbound = Events$Outbound;
+}
+
+export function eventsToJSON(events: Events): string {
+  return JSON.stringify(Events$outboundSchema.parse(events));
+}
+
+export function eventsFromJSON(
+  jsonString: string,
+): SafeParseResult<Events, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Events$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Events' from JSON`,
+  );
 }
 
 /** @internal */
@@ -902,6 +977,20 @@ export namespace Signals$ {
   export type Outbound = Signals$Outbound;
 }
 
+export function signalsToJSON(signals: Signals): string {
+  return JSON.stringify(Signals$outboundSchema.parse(signals));
+}
+
+export function signalsFromJSON(
+  jsonString: string,
+): SafeParseResult<Signals, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => Signals$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'Signals' from JSON`,
+  );
+}
+
 /** @internal */
 export const AuthenticationStatusResponse$inboundSchema: z.ZodType<
   AuthenticationStatusResponse,
@@ -990,4 +1079,24 @@ export namespace AuthenticationStatusResponse$ {
   export const outboundSchema = AuthenticationStatusResponse$outboundSchema;
   /** @deprecated use `AuthenticationStatusResponse$Outbound` instead. */
   export type Outbound = AuthenticationStatusResponse$Outbound;
+}
+
+export function authenticationStatusResponseToJSON(
+  authenticationStatusResponse: AuthenticationStatusResponse,
+): string {
+  return JSON.stringify(
+    AuthenticationStatusResponse$outboundSchema.parse(
+      authenticationStatusResponse,
+    ),
+  );
+}
+
+export function authenticationStatusResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<AuthenticationStatusResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => AuthenticationStatusResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'AuthenticationStatusResponse' from JSON`,
+  );
 }

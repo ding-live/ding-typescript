@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of the feedback.
@@ -104,4 +107,20 @@ export namespace FeedbackRequest$ {
   export const outboundSchema = FeedbackRequest$outboundSchema;
   /** @deprecated use `FeedbackRequest$Outbound` instead. */
   export type Outbound = FeedbackRequest$Outbound;
+}
+
+export function feedbackRequestToJSON(
+  feedbackRequest: FeedbackRequest,
+): string {
+  return JSON.stringify(FeedbackRequest$outboundSchema.parse(feedbackRequest));
+}
+
+export function feedbackRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<FeedbackRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeedbackRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeedbackRequest' from JSON`,
+  );
 }

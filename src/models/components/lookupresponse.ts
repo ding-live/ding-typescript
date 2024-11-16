@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of phone line.
@@ -223,4 +226,18 @@ export namespace LookupResponse$ {
   export const outboundSchema = LookupResponse$outboundSchema;
   /** @deprecated use `LookupResponse$Outbound` instead. */
   export type Outbound = LookupResponse$Outbound;
+}
+
+export function lookupResponseToJSON(lookupResponse: LookupResponse): string {
+  return JSON.stringify(LookupResponse$outboundSchema.parse(lookupResponse));
+}
+
+export function lookupResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<LookupResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LookupResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LookupResponse' from JSON`,
+  );
 }

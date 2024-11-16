@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type LookupRequest = {
   customerUuid: string;
@@ -57,4 +60,18 @@ export namespace LookupRequest$ {
   export const outboundSchema = LookupRequest$outboundSchema;
   /** @deprecated use `LookupRequest$Outbound` instead. */
   export type Outbound = LookupRequest$Outbound;
+}
+
+export function lookupRequestToJSON(lookupRequest: LookupRequest): string {
+  return JSON.stringify(LookupRequest$outboundSchema.parse(lookupRequest));
+}
+
+export function lookupRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<LookupRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => LookupRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'LookupRequest' from JSON`,
+  );
 }

@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The type of device the user is using.
@@ -209,4 +212,24 @@ export namespace CreateAuthenticationRequest$ {
   export const outboundSchema = CreateAuthenticationRequest$outboundSchema;
   /** @deprecated use `CreateAuthenticationRequest$Outbound` instead. */
   export type Outbound = CreateAuthenticationRequest$Outbound;
+}
+
+export function createAuthenticationRequestToJSON(
+  createAuthenticationRequest: CreateAuthenticationRequest,
+): string {
+  return JSON.stringify(
+    CreateAuthenticationRequest$outboundSchema.parse(
+      createAuthenticationRequest,
+    ),
+  );
+}
+
+export function createAuthenticationRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAuthenticationRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAuthenticationRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAuthenticationRequest' from JSON`,
+  );
 }

@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type GetAuthenticationStatusRequest = {
   authUuid: string;
@@ -51,4 +54,24 @@ export namespace GetAuthenticationStatusRequest$ {
   export const outboundSchema = GetAuthenticationStatusRequest$outboundSchema;
   /** @deprecated use `GetAuthenticationStatusRequest$Outbound` instead. */
   export type Outbound = GetAuthenticationStatusRequest$Outbound;
+}
+
+export function getAuthenticationStatusRequestToJSON(
+  getAuthenticationStatusRequest: GetAuthenticationStatusRequest,
+): string {
+  return JSON.stringify(
+    GetAuthenticationStatusRequest$outboundSchema.parse(
+      getAuthenticationStatusRequest,
+    ),
+  );
+}
+
+export function getAuthenticationStatusRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<GetAuthenticationStatusRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => GetAuthenticationStatusRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'GetAuthenticationStatusRequest' from JSON`,
+  );
 }

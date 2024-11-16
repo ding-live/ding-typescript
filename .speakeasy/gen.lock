@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: de3d2693189957170dadac38413b020f
+  docChecksum: 9fbd6321083c0c2d44365ff84b8e2cb8
   docVersion: 1.0.0
-  speakeasyVersion: 1.440.0
-  generationVersion: 2.457.9
-  releaseVersion: 0.14.9
-  configChecksum: 690e01fd8d7170871f14566982b1bfda
+  speakeasyVersion: 1.440.1
+  generationVersion: 2.460.1
+  releaseVersion: 0.14.10
+  configChecksum: d54bebd40cdd34dabd01be0ac04d833e
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    core: 3.18.4
+    core: 3.18.5
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2

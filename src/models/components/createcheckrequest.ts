@@ -4,6 +4,9 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type CreateCheckRequest = {
   /**
@@ -72,4 +75,22 @@ export namespace CreateCheckRequest$ {
   export const outboundSchema = CreateCheckRequest$outboundSchema;
   /** @deprecated use `CreateCheckRequest$Outbound` instead. */
   export type Outbound = CreateCheckRequest$Outbound;
+}
+
+export function createCheckRequestToJSON(
+  createCheckRequest: CreateCheckRequest,
+): string {
+  return JSON.stringify(
+    CreateCheckRequest$outboundSchema.parse(createCheckRequest),
+  );
+}
+
+export function createCheckRequestFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateCheckRequest, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateCheckRequest$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateCheckRequest' from JSON`,
+  );
 }

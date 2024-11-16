@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The status of the retry. Possible values are:
@@ -153,4 +156,24 @@ export namespace RetryAuthenticationResponse$ {
   export const outboundSchema = RetryAuthenticationResponse$outboundSchema;
   /** @deprecated use `RetryAuthenticationResponse$Outbound` instead. */
   export type Outbound = RetryAuthenticationResponse$Outbound;
+}
+
+export function retryAuthenticationResponseToJSON(
+  retryAuthenticationResponse: RetryAuthenticationResponse,
+): string {
+  return JSON.stringify(
+    RetryAuthenticationResponse$outboundSchema.parse(
+      retryAuthenticationResponse,
+    ),
+  );
+}
+
+export function retryAuthenticationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<RetryAuthenticationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => RetryAuthenticationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'RetryAuthenticationResponse' from JSON`,
+  );
 }

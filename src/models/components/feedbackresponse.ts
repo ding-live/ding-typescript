@@ -3,6 +3,9 @@
  */
 
 import * as z from "zod";
+import { safeParse } from "../../lib/schemas.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 export type FeedbackResponse = {
   /**
@@ -45,4 +48,22 @@ export namespace FeedbackResponse$ {
   export const outboundSchema = FeedbackResponse$outboundSchema;
   /** @deprecated use `FeedbackResponse$Outbound` instead. */
   export type Outbound = FeedbackResponse$Outbound;
+}
+
+export function feedbackResponseToJSON(
+  feedbackResponse: FeedbackResponse,
+): string {
+  return JSON.stringify(
+    FeedbackResponse$outboundSchema.parse(feedbackResponse),
+  );
+}
+
+export function feedbackResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<FeedbackResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => FeedbackResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'FeedbackResponse' from JSON`,
+  );
 }

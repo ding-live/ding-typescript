@@ -4,7 +4,10 @@
 
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
+import { safeParse } from "../../lib/schemas.js";
 import { ClosedEnum } from "../../types/enums.js";
+import { Result as SafeParseResult } from "../../types/fp.js";
+import { SDKValidationError } from "../errors/sdkvalidationerror.js";
 
 /**
  * The status of the authentication. Possible values are:
@@ -129,4 +132,24 @@ export namespace CreateAuthenticationResponse$ {
   export const outboundSchema = CreateAuthenticationResponse$outboundSchema;
   /** @deprecated use `CreateAuthenticationResponse$Outbound` instead. */
   export type Outbound = CreateAuthenticationResponse$Outbound;
+}
+
+export function createAuthenticationResponseToJSON(
+  createAuthenticationResponse: CreateAuthenticationResponse,
+): string {
+  return JSON.stringify(
+    CreateAuthenticationResponse$outboundSchema.parse(
+      createAuthenticationResponse,
+    ),
+  );
+}
+
+export function createAuthenticationResponseFromJSON(
+  jsonString: string,
+): SafeParseResult<CreateAuthenticationResponse, SDKValidationError> {
+  return safeParse(
+    jsonString,
+    (x) => CreateAuthenticationResponse$inboundSchema.parse(JSON.parse(x)),
+    `Failed to parse 'CreateAuthenticationResponse' from JSON`,
+  );
 }
