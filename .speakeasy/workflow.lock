@@ -1,21 +1,21 @@
-speakeasyVersion: 1.445.2
+speakeasyVersion: 1.448.0
 sources:
     my-source:
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:1190115eac332845cc130360512e2c8a58453fcf5a60706935413c37ec413534
+        sourceRevisionDigest: sha256:57fc9341015579691c8f2d58c545455ab68a1ded368b2a228fb93c77cfe6c366
         sourceBlobDigest: sha256:4d3dd890b21d2c069d944869e00ea2505c58a172c1b06fa3cb7b59c56c21a500
         tags:
             - latest
-            - speakeasy-sdk-regen-1732579418
+            - speakeasy-sdk-regen-1732665821
             - 1.0.0
 targets:
     '@ding-live/ding':
         source: my-source
         sourceNamespace: my-source
-        sourceRevisionDigest: sha256:1190115eac332845cc130360512e2c8a58453fcf5a60706935413c37ec413534
+        sourceRevisionDigest: sha256:57fc9341015579691c8f2d58c545455ab68a1ded368b2a228fb93c77cfe6c366
         sourceBlobDigest: sha256:4d3dd890b21d2c069d944869e00ea2505c58a172c1b06fa3cb7b59c56c21a500
-        codeSamplesNamespace: my-source-code-samples
-        codeSamplesRevisionDigest: sha256:2a6b65d295c011a9557417b03cb4d37d14ae6cdd7be8dd3885a6d07ea5996dce
+        codeSamplesNamespace: my-source-typescript-code-samples
+        codeSamplesRevisionDigest: sha256:e6ab9c223a6655ea3b168fcc549c2e4370ed86d9d2c2d9bea8c49d8231771ff1
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -34,5 +34,5 @@ workflow:
                     token: $NPM_TOKEN
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/ding/ding/my-source-code-samples
+                    location: registry.speakeasyapi.dev/ding/ding/my-source-typescript-code-samples
                 blocking: false
