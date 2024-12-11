@@ -82,6 +82,10 @@ export type LineType = ClosedEnum<typeof LineType>;
 
 export type LookupResponse = {
   /**
+   * The CNAM (Caller ID Name) associated with the phone number. Contact us if you need to use this functionality. Once enabled, put `cnam` option to `type` query parameter.
+   */
+  callerName?: string | undefined;
+  /**
    * The carrier of the phone number.
    */
   carrier?: string | undefined;
@@ -161,6 +165,7 @@ export const LookupResponse$inboundSchema: z.ZodType<
   z.ZodTypeDef,
   unknown
 > = z.object({
+  caller_name: z.string().optional(),
   carrier: z.string().optional(),
   country_code: z.string().optional(),
   line_type: LineType$inboundSchema.optional(),
@@ -171,6 +176,7 @@ export const LookupResponse$inboundSchema: z.ZodType<
   temporary_phone_number: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
+    "caller_name": "callerName",
     "country_code": "countryCode",
     "line_type": "lineType",
     "number_ported": "numberPorted",
@@ -181,6 +187,7 @@ export const LookupResponse$inboundSchema: z.ZodType<
 
 /** @internal */
 export type LookupResponse$Outbound = {
+  caller_name?: string | undefined;
   carrier?: string | undefined;
   country_code?: string | undefined;
   line_type?: string | undefined;
@@ -197,6 +204,7 @@ export const LookupResponse$outboundSchema: z.ZodType<
   z.ZodTypeDef,
   LookupResponse
 > = z.object({
+  callerName: z.string().optional(),
   carrier: z.string().optional(),
   countryCode: z.string().optional(),
   lineType: LineType$outboundSchema.optional(),
@@ -207,6 +215,7 @@ export const LookupResponse$outboundSchema: z.ZodType<
   temporaryPhoneNumber: z.boolean().optional(),
 }).transform((v) => {
   return remap$(v, {
+    callerName: "caller_name",
     countryCode: "country_code",
     lineType: "line_type",
     numberPorted: "number_ported",

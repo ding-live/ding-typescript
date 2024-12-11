@@ -5,13 +5,40 @@
 import * as z from "zod";
 import { remap as remap$ } from "../../lib/primitives.js";
 import { safeParse } from "../../lib/schemas.js";
+import { ClosedEnum } from "../../types/enums.js";
 import { Result as SafeParseResult } from "../../types/fp.js";
 import { SDKValidationError } from "../errors/sdkvalidationerror.js";
+
+export const Type = {
+  Cnam: "cnam",
+} as const;
+export type Type = ClosedEnum<typeof Type>;
 
 export type LookupRequest = {
   customerUuid: string;
   phoneNumber: string;
+  type?: Array<Type> | undefined;
 };
+
+/** @internal */
+export const Type$inboundSchema: z.ZodNativeEnum<typeof Type> = z.nativeEnum(
+  Type,
+);
+
+/** @internal */
+export const Type$outboundSchema: z.ZodNativeEnum<typeof Type> =
+  Type$inboundSchema;
+
+/**
+ * @internal
+ * @deprecated This namespace will be removed in future versions. Use schemas and types that are exported directly from this module.
+ */
+export namespace Type$ {
+  /** @deprecated use `Type$inboundSchema` instead. */
+  export const inboundSchema = Type$inboundSchema;
+  /** @deprecated use `Type$outboundSchema` instead. */
+  export const outboundSchema = Type$outboundSchema;
+}
 
 /** @internal */
 export const LookupRequest$inboundSchema: z.ZodType<
@@ -21,6 +48,7 @@ export const LookupRequest$inboundSchema: z.ZodType<
 > = z.object({
   "customer-uuid": z.string(),
   phone_number: z.string(),
+  type: z.array(Type$inboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     "customer-uuid": "customerUuid",
@@ -32,6 +60,7 @@ export const LookupRequest$inboundSchema: z.ZodType<
 export type LookupRequest$Outbound = {
   "customer-uuid": string;
   phone_number: string;
+  type?: Array<string> | undefined;
 };
 
 /** @internal */
@@ -42,6 +71,7 @@ export const LookupRequest$outboundSchema: z.ZodType<
 > = z.object({
   customerUuid: z.string(),
   phoneNumber: z.string(),
+  type: z.array(Type$outboundSchema).optional(),
 }).transform((v) => {
   return remap$(v, {
     customerUuid: "customer-uuid",

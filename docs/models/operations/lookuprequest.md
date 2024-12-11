@@ -13,7 +13,8 @@ let value: LookupRequest = {
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `customerUuid`     | *string*           | :heavy_check_mark: | N/A                |
-| `phoneNumber`      | *string*           | :heavy_check_mark: | N/A                |
+| Field                                                | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `customerUuid`                                       | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `phoneNumber`                                        | *string*                                             | :heavy_check_mark:                                   | N/A                                                  |
+| `type`                                               | [operations.Type](../../models/operations/type.md)[] | :heavy_minus_sign:                                   | N/A                                                  |

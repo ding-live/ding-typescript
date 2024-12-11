@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
-  docChecksum: 9fbd6321083c0c2d44365ff84b8e2cb8
+  docChecksum: 7b0a21df5c4526c3e13357d16d9397df
   docVersion: 1.0.0
-  speakeasyVersion: 1.453.8
+  speakeasyVersion: 1.453.10
   generationVersion: 2.474.15
-  releaseVersion: 0.14.34
-  configChecksum: 653799ef0753f5cf472e8709d9b76716
+  releaseVersion: 0.14.35
+  configChecksum: cbc6aa60beca585043a7651b972b9db3
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -73,6 +73,7 @@ generatedFiles:
   - docs/models/errors/errorresponse.md
   - docs/models/operations/getauthenticationstatusrequest.md
   - docs/models/operations/lookuprequest.md
+  - docs/models/operations/type.md
   - docs/sdks/ding/README.md
   - docs/sdks/lookup/README.md
   - docs/sdks/otp/README.md
@@ -185,6 +186,7 @@ examples:
       parameters:
         path:
           phone_number: "<value>"
+        query: {}
         header:
           customer-uuid: "6e93aa15-9177-4d09-8395-b69ce50db1c8"
       responses:

@@ -5,6 +5,7 @@
 import { lookupLookup } from "../funcs/lookupLookup.js";
 import { ClientSDK, RequestOptions } from "../lib/sdks.js";
 import * as components from "../models/components/index.js";
+import * as operations from "../models/operations/index.js";
 import { unwrapAsync } from "../types/fp.js";
 
 export class Lookup extends ClientSDK {
@@ -14,12 +15,14 @@ export class Lookup extends ClientSDK {
   async lookup(
     customerUuid: string,
     phoneNumber: string,
+    type?: Array<operations.Type> | undefined,
     options?: RequestOptions,
   ): Promise<components.LookupResponse> {
     return unwrapAsync(lookupLookup(
       this,
       customerUuid,
       phoneNumber,
+      type,
       options,
     ));
   }

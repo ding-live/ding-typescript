@@ -3,7 +3,7 @@
  */
 
 import { DingCore } from "../core.js";
-import { encodeSimple } from "../lib/encodings.js";
+import { encodeFormQuery, encodeSimple } from "../lib/encodings.js";
 import * as M from "../lib/matchers.js";
 import { safeParse } from "../lib/schemas.js";
 import { RequestOptions } from "../lib/sdks.js";
@@ -30,6 +30,7 @@ export async function lookupLookup(
   client: DingCore,
   customerUuid: string,
   phoneNumber: string,
+  type?: Array<operations.Type> | undefined,
   options?: RequestOptions,
 ): Promise<
   Result<
@@ -47,6 +48,7 @@ export async function lookupLookup(
   const input: operations.LookupRequest = {
     customerUuid: customerUuid,
     phoneNumber: phoneNumber,
+    type: type,
   };
 
   const parsed = safeParse(
@@ -68,6 +70,10 @@ export async function lookupLookup(
   };
 
   const path = pathToFunc("/lookup/{phone_number}")(pathParams);
+
+  const query = encodeFormQuery({
+    "type": payload.type,
+  });
 
   const headers = new Headers({
     Accept: "application/json",
@@ -99,6 +105,7 @@ export async function lookupLookup(
     method: "GET",
     path: path,
     headers: headers,
+    query: query,
     body: body,
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
