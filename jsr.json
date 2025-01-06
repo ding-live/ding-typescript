@@ -2,7 +2,7 @@
 
 {
   "name": "@ding-live/ding",
-  "version": "0.14.60",
+  "version": "0.14.61",
   "exports": {
     ".": "./src/index.ts",    
     "./models/errors": "./src/models/errors/index.ts",    
