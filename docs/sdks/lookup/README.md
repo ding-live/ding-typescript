@@ -23,7 +23,7 @@ const ding = new Ding({
 });
 
 async function run() {
-  const result = await ding.lookup.lookup("6e93aa15-9177-4d09-8395-b69ce50db1c8", "<value>");
+  const result = await ding.lookup.lookup("69a197d9-356c-45d1-a807-41874e16b555", "<value>");
 
   // Handle the result
   console.log(result);
@@ -47,7 +47,7 @@ const ding = new DingCore({
 });
 
 async function run() {
-  const res = await lookupLookup(ding, "6e93aa15-9177-4d09-8395-b69ce50db1c8", "<value>");
+  const res = await lookupLookup(ding, "69a197d9-356c-45d1-a807-41874e16b555", "<value>");
 
   if (!res.ok) {
     throw res.error;

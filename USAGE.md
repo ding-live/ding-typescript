@@ -13,7 +13,7 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.createAuthentication({
-    customerUuid: "c9f826e0-deca-41ec-871f-ecd6e8efeb46",
+    customerUuid: "cf2edc1c-7fc6-48fb-86da-b7508c6b7b71",
     locale: "fr-FR",
     phoneNumber: "+1234567890",
   });
@@ -40,9 +40,9 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.check({
-    authenticationUuid: "e0e7b0e9-739d-424b-922f-1c2cb48ab077",
+    authenticationUuid: "eebe792b-2fcc-44a0-87f1-650e79259e02",
     checkCode: "123456",
-    customerUuid: "8f1196d5-806e-4b71-9b24-5f96ec052808",
+    customerUuid: "64f66a7c-4b2c-4131-a8ff-d5b954cca05f",
   });
 
   // Handle the result
@@ -90,7 +90,7 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.otp.feedback({
-    customerUuid: "c0c405fa-6bcb-4094-9430-7d6e2428ff23",
+    customerUuid: "cc0f6c04-40de-448f-8301-3cb0e6565dff",
     phoneNumber: "+1234567890",
     status: "onboarded",
   });
@@ -142,7 +142,7 @@ const ding = new Ding({
 
 async function run() {
   const result = await ding.lookup.lookup(
-    "6e93aa15-9177-4d09-8395-b69ce50db1c8",
+    "69a197d9-356c-45d1-a807-41874e16b555",
     "<value>",
   );
 
