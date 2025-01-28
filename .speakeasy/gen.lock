@@ -3,10 +3,10 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: 7b0a21df5c4526c3e13357d16d9397df
   docVersion: 1.0.0
-  speakeasyVersion: 1.476.1
+  speakeasyVersion: 1.476.2
   generationVersion: 2.495.1
-  releaseVersion: 0.14.81
-  configChecksum: 6a0328f965c7e208f8202f890c8f34cf
+  releaseVersion: 0.14.82
+  configChecksum: 58271551adadd280808b8bf37302e42b
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
