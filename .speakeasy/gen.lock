@@ -3,10 +3,10 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: 7b0a21df5c4526c3e13357d16d9397df
   docVersion: 1.0.0
-  speakeasyVersion: 1.477.2
-  generationVersion: 2.497.8
-  releaseVersion: 0.14.84
-  configChecksum: b6ac96238744a075d1ef04df061c0e88
+  speakeasyVersion: 1.480.0
+  generationVersion: 2.499.0
+  releaseVersion: 0.14.85
+  configChecksum: 17adb976cb7dea18af95163785ae953d
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -14,7 +14,7 @@ management:
 features:
   typescript:
     additionalDependencies: 0.1.0
-    core: 3.18.19
+    core: 3.18.20
     defaultEnabledRetries: 0.1.0
     enumUnions: 0.1.0
     envVarSecurityUsage: 0.1.2
@@ -29,7 +29,6 @@ features:
     sdkHooks: 0.2.0
     unions: 2.85.8
 generatedFiles:
-  - .eslintrc.cjs
   - .gitattributes
   - .npmignore
   - FUNCTIONS.md
@@ -76,6 +75,7 @@ generatedFiles:
   - docs/sdks/ding/README.md
   - docs/sdks/lookup/README.md
   - docs/sdks/otp/README.md
+  - eslint.config.mjs
   - jsr.json
   - package.json
   - src/core.ts
