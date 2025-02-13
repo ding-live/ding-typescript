@@ -89,6 +89,7 @@ export async function lookupLookup(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "lookup",
     oAuth2Scopes: [],
 

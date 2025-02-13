@@ -78,6 +78,7 @@ export async function otpGetAuthenticationStatus(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "getAuthenticationStatus",
     oAuth2Scopes: [],
 

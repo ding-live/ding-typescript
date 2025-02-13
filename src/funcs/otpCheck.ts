@@ -69,6 +69,7 @@ export async function otpCheck(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "check",
     oAuth2Scopes: [],
 

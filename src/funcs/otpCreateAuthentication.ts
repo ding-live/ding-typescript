@@ -71,6 +71,7 @@ export async function otpCreateAuthentication(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "create-authentication",
     oAuth2Scopes: [],
 

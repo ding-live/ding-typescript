@@ -69,6 +69,7 @@ export async function otpFeedback(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "feedback",
     oAuth2Scopes: [],
 

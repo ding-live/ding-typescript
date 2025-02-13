@@ -71,6 +71,7 @@ export async function otpRetry(
   const requestSecurity = resolveGlobalSecurity(securityInput);
 
   const context = {
+    baseURL: options?.serverURL ?? "",
     operationID: "retry",
     oAuth2Scopes: [],
 
