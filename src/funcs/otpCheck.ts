@@ -21,16 +21,17 @@ import {
 import * as errors from "../models/errors/index.js";
 import { SDKError } from "../models/errors/sdkerror.js";
 import { SDKValidationError } from "../models/errors/sdkvalidationerror.js";
+import { APICall, APIPromise } from "../types/async.js";
 import { Result } from "../types/fp.js";
 
 /**
  * Check a code
  */
-export async function otpCheck(
+export function otpCheck(
   client: DingCore,
   request?: components.CreateCheckRequest | undefined,
   options?: RequestOptions,
-): Promise<
+): APIPromise<
   Result<
     components.CreateCheckResponse,
     | errors.ErrorResponse
@@ -43,6 +44,33 @@ export async function otpCheck(
     | ConnectionError
   >
 > {
+  return new APIPromise($do(
+    client,
+    request,
+    options,
+  ));
+}
+
+async function $do(
+  client: DingCore,
+  request?: components.CreateCheckRequest | undefined,
+  options?: RequestOptions,
+): Promise<
+  [
+    Result<
+      components.CreateCheckResponse,
+      | errors.ErrorResponse
+      | SDKError
+      | SDKValidationError
+      | UnexpectedClientError
+      | InvalidRequestError
+      | RequestAbortedError
+      | RequestTimeoutError
+      | ConnectionError
+    >,
+    APICall,
+  ]
+> {
   const parsed = safeParse(
     request,
     (value) =>
@@ -50,7 +78,7 @@ export async function otpCheck(
     "Input validation failed",
   );
   if (!parsed.ok) {
-    return parsed;
+    return [parsed, { status: "invalid" }];
   }
   const payload = parsed.value;
   const body = payload === undefined
@@ -92,7 +120,7 @@ export async function otpCheck(
     timeoutMs: options?.timeoutMs || client._options.timeoutMs || -1,
   }, options);
   if (!requestRes.ok) {
-    return requestRes;
+    return [requestRes, { status: "invalid" }];
   }
   const req = requestRes.value;
 
@@ -103,7 +131,7 @@ export async function otpCheck(
     retryCodes: context.retryCodes,
   });
   if (!doResult.ok) {
-    return doResult;
+    return [doResult, { status: "request-error", request: req }];
   }
   const response = doResult.value;
 
@@ -128,8 +156,8 @@ export async function otpCheck(
     M.fail("5XX"),
   )(response, { extraFields: responseFields });
   if (!result.ok) {
-    return result;
+    return [result, { status: "complete", request: req, response }];
   }
 
-  return result;
+  return [result, { status: "complete", request: req, response }];
 }
