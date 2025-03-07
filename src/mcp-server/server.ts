@@ -6,6 +6,10 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { DingCore } from "../core.js";
 import { SDKOptions } from "../lib/config.js";
 import type { ConsoleLogger } from "./console-logger.js";
+import {
+  createRegisterResource,
+  createRegisterResourceTemplate,
+} from "./resources.js";
 import { MCPScope, mcpScopes } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$lookupLookup } from "./tools/lookupLookup.js";
@@ -25,7 +29,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Ding",
-    version: "0.18.2",
+    version: "0.19.0",
   });
 
   const client = new DingCore({
@@ -33,7 +37,9 @@ export function createMCPServer(deps: {
     serverURL: deps.serverURL,
     serverIdx: deps.serverIdx,
   });
+
   const scopes = new Set(deps.scopes ?? mcpScopes);
+
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(
     deps.logger,
@@ -42,6 +48,15 @@ export function createMCPServer(deps: {
     scopes,
     allowedTools,
   );
+  const resource = createRegisterResource(deps.logger, server, client, scopes);
+  const resourceTemplate = createRegisterResourceTemplate(
+    deps.logger,
+    server,
+    client,
+    scopes,
+  );
+  const register = { tool, resource, resourceTemplate };
+  void register; // suppress unused warnings
 
   tool(tool$otpCheck);
   tool(tool$otpCreateAuthentication);
