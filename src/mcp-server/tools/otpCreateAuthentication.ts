@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$otpCreateAuthentication: ToolDefinition<typeof args> = {
-  name: "otp_create-authentication",
+  name: "otp-create-authentication",
   description: `Send a code`,
   args,
   tool: async (client, args, ctx) => {

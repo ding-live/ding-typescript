@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$otpRetry: ToolDefinition<typeof args> = {
-  name: "otp_retry",
+  name: "otp-retry",
   description: `Perform a retry`,
   args,
   tool: async (client, args, ctx) => {

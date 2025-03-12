@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$otpCheck: ToolDefinition<typeof args> = {
-  name: "otp_check",
+  name: "otp-check",
   description: `Check a code`,
   args,
   tool: async (client, args, ctx) => {

@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$otpFeedback: ToolDefinition<typeof args> = {
-  name: "otp_feedback",
+  name: "otp-feedback",
   description: `Send feedback`,
   args,
   tool: async (client, args, ctx) => {

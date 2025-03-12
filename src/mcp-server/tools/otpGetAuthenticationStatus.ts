@@ -11,7 +11,7 @@ const args = {
 };
 
 export const tool$otpGetAuthenticationStatus: ToolDefinition<typeof args> = {
-  name: "otp_get-authentication-status",
+  name: "otp-get-authentication-status",
   description: `Get authentication status`,
   args,
   tool: async (client, args, ctx) => {
