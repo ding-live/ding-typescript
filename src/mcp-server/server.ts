@@ -29,7 +29,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Ding",
-    version: "0.20.3",
+    version: "0.20.4",
   });
 
   const client = new DingCore({
