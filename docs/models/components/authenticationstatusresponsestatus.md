@@ -13,7 +13,7 @@ The status of the delivery. Possible values are:
 ```typescript
 import { AuthenticationStatusResponseStatus } from "@ding-live/ding/models/components";
 
-let value: AuthenticationStatusResponseStatus = "submitted";
+let value: AuthenticationStatusResponseStatus = "undeliverable";
 ```
 
 ## Values

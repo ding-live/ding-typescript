@@ -7,7 +7,7 @@ The type of the event.
 ```typescript
 import { AuthenticationStatusResponseType } from "@ding-live/ding/models/components";
 
-let value: AuthenticationStatusResponseType = "check";
+let value: AuthenticationStatusResponseType = "attempt";
 ```
 
 ## Values

@@ -6,7 +6,7 @@
 import { LookupRequest } from "@ding-live/ding/models/operations";
 
 let value: LookupRequest = {
-  customerUuid: "43803657-49d1-482b-8692-275fcbe189f4",
+  customerUuid: "d8173d3e-be8b-4bdd-bb70-5e01f59000b8",
   phoneNumber: "<value>",
 };
 ```

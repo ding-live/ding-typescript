@@ -13,7 +13,7 @@ The status of the attempt. Possible values are:
 ```typescript
 import { AuthenticationStatusResponseSchemasStatus } from "@ding-live/ding/models/components";
 
-let value: AuthenticationStatusResponseSchemasStatus = "delivered";
+let value: AuthenticationStatusResponseSchemasStatus = "expired";
 ```
 
 ## Values
