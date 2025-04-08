@@ -11,7 +11,7 @@ import {
   createRegisterResource,
   createRegisterResourceTemplate,
 } from "./resources.js";
-import { MCPScope, mcpScopes } from "./scopes.js";
+import { MCPScope } from "./scopes.js";
 import { createRegisterTool } from "./tools.js";
 import { tool$lookupLookup } from "./tools/lookupLookup.js";
 import { tool$otpCheck } from "./tools/otpCheck.js";
@@ -30,7 +30,7 @@ export function createMCPServer(deps: {
 }) {
   const server = new McpServer({
     name: "Ding",
-    version: "0.22.19",
+    version: "0.22.20",
   });
 
   const client = new DingCore({
@@ -39,7 +39,7 @@ export function createMCPServer(deps: {
     serverIdx: deps.serverIdx,
   });
 
-  const scopes = new Set(deps.scopes ?? mcpScopes);
+  const scopes = new Set(deps.scopes);
 
   const allowedTools = deps.allowedTools && new Set(deps.allowedTools);
   const tool = createRegisterTool(

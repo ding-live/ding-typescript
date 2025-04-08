@@ -3,10 +3,10 @@ id: 7a2c976b-8158-4d12-8b59-c491e9e10cfd
 management:
   docChecksum: 7b0a21df5c4526c3e13357d16d9397df
   docVersion: 1.0.0
-  speakeasyVersion: 1.529.1
-  generationVersion: 2.566.5
-  releaseVersion: 0.22.19
-  configChecksum: 83c7392584f2d580fcba487b0b28ef2d
+  speakeasyVersion: 1.531.0
+  generationVersion: 2.568.2
+  releaseVersion: 0.22.20
+  configChecksum: 238267ecdd60482fd193afe833232f83
   repoURL: https://github.com/ding-live/ding-typescript.git
   repoSubDirectory: .
   installationURL: https://github.com/ding-live/ding-typescript
@@ -24,7 +24,7 @@ features:
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
-    mcpServer: 0.9.0
+    mcpServer: 0.9.1
     responseFormat: 0.2.3
     retries: 2.83.0
     sdkHooks: 0.2.0
