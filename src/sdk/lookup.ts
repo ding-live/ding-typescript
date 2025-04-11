@@ -11,6 +11,9 @@ import { unwrapAsync } from "../types/fp.js";
 export class Lookup extends ClientSDK {
   /**
    * Look up for phone number
+   *
+   * @remarks
+   * Perform a phone number lookup.
    */
   async lookup(
     customerUuid: string,

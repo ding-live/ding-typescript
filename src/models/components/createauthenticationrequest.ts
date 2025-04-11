@@ -60,7 +60,7 @@ export type CreateAuthenticationRequest = {
    */
   ip?: string | undefined;
   /**
-   * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
+   * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine.
    */
   isReturningUser?: boolean | undefined;
   /**

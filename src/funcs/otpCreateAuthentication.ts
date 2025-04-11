@@ -26,6 +26,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Send a code
+ *
+ * @remarks
+ * Send an OTP code to a user's phone number.
  */
 export function otpCreateAuthentication(
   client: DingCore,

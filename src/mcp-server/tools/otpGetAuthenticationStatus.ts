@@ -12,7 +12,9 @@ const args = {
 
 export const tool$otpGetAuthenticationStatus: ToolDefinition<typeof args> = {
   name: "otp-get-authentication-status",
-  description: `Get authentication status`,
+  description: `Get authentication status
+
+Get the status of an authentication.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await otpGetAuthenticationStatus(

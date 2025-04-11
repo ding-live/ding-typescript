@@ -15,7 +15,9 @@ const args = {
 
 export const tool$lookupLookup: ToolDefinition<typeof args> = {
   name: "lookup-lookup",
-  description: `Look up for phone number`,
+  description: `Look up for phone number
+
+Perform a phone number lookup.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await lookupLookup(

@@ -12,7 +12,9 @@ const args = {
 
 export const tool$otpFeedback: ToolDefinition<typeof args> = {
   name: "otp-feedback",
-  description: `Send feedback`,
+  description: `Send feedback
+
+Send feedback about the authentication process.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await otpFeedback(

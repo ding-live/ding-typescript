@@ -27,6 +27,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Get authentication status
+ *
+ * @remarks
+ * Get the status of an authentication.
  */
 export function otpGetAuthenticationStatus(
   client: DingCore,

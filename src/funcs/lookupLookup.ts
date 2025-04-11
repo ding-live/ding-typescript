@@ -27,6 +27,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Look up for phone number
+ *
+ * @remarks
+ * Perform a phone number lookup.
  */
 export function lookupLookup(
   client: DingCore,

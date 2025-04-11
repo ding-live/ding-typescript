@@ -26,6 +26,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Send feedback
+ *
+ * @remarks
+ * Send feedback about the authentication process.
  */
 export function otpFeedback(
   client: DingCore,

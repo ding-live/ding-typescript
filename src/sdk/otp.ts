@@ -14,6 +14,9 @@ import { unwrapAsync } from "../types/fp.js";
 export class Otp extends ClientSDK {
   /**
    * Check a code
+   *
+   * @remarks
+   * Check that a code entered by a user is valid.
    */
   async check(
     request?: components.CreateCheckRequest | undefined,
@@ -28,6 +31,9 @@ export class Otp extends ClientSDK {
 
   /**
    * Send a code
+   *
+   * @remarks
+   * Send an OTP code to a user's phone number.
    */
   async createAuthentication(
     request?: components.CreateAuthenticationRequest | undefined,
@@ -42,6 +48,9 @@ export class Otp extends ClientSDK {
 
   /**
    * Send feedback
+   *
+   * @remarks
+   * Send feedback about the authentication process.
    */
   async feedback(
     request?: components.FeedbackRequest | undefined,
@@ -56,6 +65,9 @@ export class Otp extends ClientSDK {
 
   /**
    * Get authentication status
+   *
+   * @remarks
+   * Get the status of an authentication.
    */
   async getAuthenticationStatus(
     authUuid: string,
@@ -70,6 +82,9 @@ export class Otp extends ClientSDK {
 
   /**
    * Perform a retry
+   *
+   * @remarks
+   * Perform a retry if a user has not received the code.
    */
   async retry(
     request?: components.RetryAuthenticationRequest | undefined,

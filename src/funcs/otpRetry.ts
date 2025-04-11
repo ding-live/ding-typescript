@@ -26,6 +26,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Perform a retry
+ *
+ * @remarks
+ * Perform a retry if a user has not received the code.
  */
 export function otpRetry(
   client: DingCore,

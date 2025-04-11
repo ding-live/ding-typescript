@@ -26,6 +26,9 @@ import { Result } from "../types/fp.js";
 
 /**
  * Check a code
+ *
+ * @remarks
+ * Check that a code entered by a user is valid.
  */
 export function otpCheck(
   client: DingCore,

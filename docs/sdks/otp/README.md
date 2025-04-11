@@ -15,7 +15,7 @@ Send OTP codes to your users using their phone numbers.
 
 ## check
 
-Check a code
+Check that a code entered by a user is valid.
 
 ### Example Usage
 
@@ -96,7 +96,7 @@ run();
 
 ## createAuthentication
 
-Send a code
+Send an OTP code to a user's phone number.
 
 ### Example Usage
 
@@ -177,7 +177,7 @@ run();
 
 ## feedback
 
-Send feedback
+Send feedback about the authentication process.
 
 ### Example Usage
 
@@ -258,7 +258,7 @@ run();
 
 ## getAuthenticationStatus
 
-Get authentication status
+Get the status of an authentication.
 
 ### Example Usage
 
@@ -331,7 +331,7 @@ run();
 
 ## retry
 
-Perform a retry
+Perform a retry if a user has not received the code.
 
 ### Example Usage
 

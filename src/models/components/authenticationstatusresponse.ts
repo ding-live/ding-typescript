@@ -283,7 +283,7 @@ export type AuthenticationStatusResponseDeviceType = ClosedEnum<
 >;
 
 /**
- * [Signals](/guides/prevent-fraud#signals) are data points used to distinguish between fraudulent and legitimate users.
+ * Signals are data points used to distinguish between fraudulent and legitimate users.
  */
 export type Signals = {
   /**
@@ -311,7 +311,7 @@ export type Signals = {
    */
   ip?: string | undefined;
   /**
-   * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/guides/prevent-fraud#signals).
+   * This signal should do more than just confirm if a user is returning to your app; it should provide a higher level of trust, indicating that the user is genuine. For more details, refer to [Signals](/verify/v2/documentation/prevent-fraud#signals).
    */
   isReturningUser?: boolean | undefined;
   /**
@@ -335,7 +335,7 @@ export type AuthenticationStatusResponse = {
    */
   phoneNumber?: string | undefined;
   /**
-   * [Signals](/guides/prevent-fraud#signals) are data points used to distinguish between fraudulent and legitimate users.
+   * Signals are data points used to distinguish between fraudulent and legitimate users.
    */
   signals?: Signals | undefined;
   /**

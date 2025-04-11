@@ -12,7 +12,9 @@ const args = {
 
 export const tool$otpRetry: ToolDefinition<typeof args> = {
   name: "otp-retry",
-  description: `Perform a retry`,
+  description: `Perform a retry
+
+Perform a retry if a user has not received the code.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await otpRetry(

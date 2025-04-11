@@ -12,7 +12,9 @@ const args = {
 
 export const tool$otpCheck: ToolDefinition<typeof args> = {
   name: "otp-check",
-  description: `Check a code`,
+  description: `Check a code
+
+Check that a code entered by a user is valid.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await otpCheck(

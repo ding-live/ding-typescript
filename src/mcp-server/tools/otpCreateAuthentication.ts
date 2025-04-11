@@ -12,7 +12,9 @@ const args = {
 
 export const tool$otpCreateAuthentication: ToolDefinition<typeof args> = {
   name: "otp-create-authentication",
-  description: `Send a code`,
+  description: `Send a code
+
+Send an OTP code to a user's phone number.`,
   args,
   tool: async (client, args, ctx) => {
     const [result, apiCall] = await otpCreateAuthentication(
