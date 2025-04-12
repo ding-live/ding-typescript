@@ -154,7 +154,6 @@ npx -y --package @ding-live/ding -- mcp start --help
 
 Send an OTP code to a user's phone number.
 
-
 ```typescript
 import { Ding } from "@ding-live/ding";
 
@@ -181,7 +180,6 @@ run();
 
 Check that a code entered by a user is valid.
 
-
 ```typescript
 import { Ding } from "@ding-live/ding";
 
@@ -207,7 +205,6 @@ run();
 ### Perform a retry
 
 Perform a retry if a user has not received the code.
-
 
 ```typescript
 import { Ding } from "@ding-live/ding";
@@ -258,7 +255,6 @@ run();
 
 Get the status of an authentication.
 
-
 ```typescript
 import { Ding } from "@ding-live/ding";
 
@@ -282,7 +278,6 @@ run();
 ### Look up for phone number
 
 Perform a phone number lookup.
-
 
 ```typescript
 import { Ding } from "@ding-live/ding";
