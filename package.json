@@ -1,6 +1,6 @@
 {
   "name": "@ding-live/ding",
-  "version": "0.22.27",
+  "version": "0.22.28",
   "author": "Ding",
   "bin": {
     "mcp": "bin/mcp-server.js"
